@@ -5,7 +5,7 @@ Subject: [PATCH] Linear-Region-Format
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index d6ba23ce0cc12a17580288e4b95ecd398be33ec9..f8b99815e2fc2ca764ef45093b502897aba3ac8b 100644
+index f2c473a22cf33a1783f7daec578da5b08caf4878..d64d011fa8d2dcd566fc173493d6be947115bb24 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -19,6 +19,8 @@ dependencies {
@@ -645,7 +645,7 @@ index 0000000000000000000000000000000000000000..7492271e263bba9d302ef1d074e983c9
 +    }
 +}
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 72d4c8cd47c8bd2f191aec01517f6ce323b1a8c4..536e30c94cd7c8582fea1ca810583a36467a24ae 100644
+index 8cc74922fb00a1975dfb9bd2af8972c7afcfdb14..95d3ae694ad6f50d91a00b99f7b3e44fa1f2f1e6 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -923,7 +923,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -667,7 +667,7 @@ index 72d4c8cd47c8bd2f191aec01517f6ce323b1a8c4..536e30c94cd7c8582fea1ca810583a36
  
          return flag3;
 diff --git a/src/main/java/net/minecraft/server/level/ChunkMap.java b/src/main/java/net/minecraft/server/level/ChunkMap.java
-index 21ec49acb3c1241d9286959c42a7f8363f637e4f..09bd70531a0e4022eb7a76569bb84236658ac7bf 100644
+index 6ab9f83786dcfbd3156d2f2bd6da57baed1399f4..6f83bb505da565a0e54054d11fcb7251c514708b 100644
 --- a/src/main/java/net/minecraft/server/level/ChunkMap.java
 +++ b/src/main/java/net/minecraft/server/level/ChunkMap.java
 @@ -52,6 +52,8 @@ import java.util.function.IntFunction;
@@ -723,7 +723,7 @@ index 21ec49acb3c1241d9286959c42a7f8363f637e4f..09bd70531a0e4022eb7a76569bb84236
          regionFile.setStatus(chunkPos.x, chunkPos.z, ChunkSerializer.getStatus(compound));
      }
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index 4b6a53a3193f7c025a8426b0e832f515d263824c..e0fcf0ef02ffd742747c887dbc4ecb49d50d6c6e 100644
+index 8f8f6d068058b15e7854b9f91ba2ce9a48f2c7a5..3f1faacab09a6be31e405505169fd3d4bd51eff9 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -38,6 +38,8 @@ import java.util.stream.Collectors;
@@ -735,7 +735,7 @@ index 4b6a53a3193f7c025a8426b0e832f515d263824c..e0fcf0ef02ffd742747c887dbc4ecb49
  import net.minecraft.CrashReport;
  import net.minecraft.CrashReportCategory;
  import net.minecraft.Util;
-@@ -449,8 +451,8 @@ public class ServerLevel extends Level implements WorldGenLevel {
+@@ -448,8 +450,8 @@ public class ServerLevel extends Level implements WorldGenLevel {
  
      private static final class EntityRegionFileStorage extends net.minecraft.world.level.chunk.storage.RegionFileStorage {
  
@@ -746,7 +746,7 @@ index 4b6a53a3193f7c025a8426b0e832f515d263824c..e0fcf0ef02ffd742747c887dbc4ecb49
          }
  
          protected void write(ChunkPos pos, net.minecraft.nbt.CompoundTag nbt) throws IOException {
-@@ -812,7 +814,7 @@ public class ServerLevel extends Level implements WorldGenLevel {
+@@ -811,7 +813,7 @@ public class ServerLevel extends Level implements WorldGenLevel {
          Globals.setupGlobals(this);
          boolean flag2 = minecraftserver.forceSynchronousWrites();
          DataFixer datafixer = minecraftserver.getFixerUpper();
@@ -1162,10 +1162,10 @@ index 4aac1979cf57300825a999c876fcf24d3170e68e..e1436f956f74b93d0a7bf96388f8af5b
          this.factory = factory;
          this.fixerUpper = dataFixer;
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-index d3bdc355bee762b90a77528e9da96d74e6b174ae..68869d96e156acd6a155f29e284fd2603c889bc3 100644
+index 379c10e791a961d25d7de571f81ace1ac7d84381..c8ec34097502dddb7565ad019b181ae06412d12a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-@@ -569,7 +569,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
+@@ -575,7 +575,7 @@ public class CraftWorld extends CraftRegionAccessor implements World {
                  world.getChunk(x, z); // make sure we're at ticket level 32 or lower
                  return true;
              }

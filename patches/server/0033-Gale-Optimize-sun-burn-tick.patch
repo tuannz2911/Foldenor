@@ -5,10 +5,10 @@ Subject: [PATCH] Gale-Optimize-sun-burn-tick
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
-index 83cf2d94808041d590cb9dd7091fd0039a1ad53b..5402b10cf54d633d9925be360ec575133ff1b14d 100644
+index 211f106a24e2ce73668614552010921a9ec02d61..34a0e80dc00e568af341af78930075bd7983286b 100644
 --- a/src/main/java/net/minecraft/world/entity/Entity.java
 +++ b/src/main/java/net/minecraft/world/entity/Entity.java
-@@ -2021,7 +2021,11 @@ public abstract class Entity implements Nameable, EntityAccess, CommandSource, S
+@@ -2033,7 +2033,11 @@ public abstract class Entity implements Nameable, EntityAccess, CommandSource, S
      /** @deprecated */
      @Deprecated
      public float getLightLevelDependentMagicValue() {
@@ -22,10 +22,10 @@ index 83cf2d94808041d590cb9dd7091fd0039a1ad53b..5402b10cf54d633d9925be360ec57513
  
      public void absMoveTo(double x, double y, double z, float yaw, float pitch) {
 diff --git a/src/main/java/net/minecraft/world/entity/Mob.java b/src/main/java/net/minecraft/world/entity/Mob.java
-index a1a0ac986e2052d3669428a29987630bc226d80f..01829878a1df4729fb0057cfce4820d7dac4ca35 100644
+index 54297b9dde40fe853d873d60373cd8c0a3c9466b..36560f3a3154353ae6e921365bae394b06a464c5 100644
 --- a/src/main/java/net/minecraft/world/entity/Mob.java
 +++ b/src/main/java/net/minecraft/world/entity/Mob.java
-@@ -1734,13 +1734,25 @@ public abstract class Mob extends LivingEntity implements Targeting {
+@@ -1742,13 +1742,25 @@ public abstract class Mob extends LivingEntity implements Targeting {
  
      }
  

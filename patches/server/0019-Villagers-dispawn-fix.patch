@@ -5,7 +5,7 @@ Subject: [PATCH] Villagers-dispawn-fix
 
 
 diff --git a/src/main/java/io/papermc/paper/chunk/system/scheduling/ChunkHolderManager.java b/src/main/java/io/papermc/paper/chunk/system/scheduling/ChunkHolderManager.java
-index a4157bc24c36c63502667d69910108a50114f370..41f50fcd74f878cf5d40bd5818465f1c55c36fcf 100644
+index 0d8b2a4127e8c8e4970d220b8a2240490da6e7df..c3a9586d3297bc5092422fe94ddb58586e41cc28 100644
 --- a/src/main/java/io/papermc/paper/chunk/system/scheduling/ChunkHolderManager.java
 +++ b/src/main/java/io/papermc/paper/chunk/system/scheduling/ChunkHolderManager.java
 @@ -35,6 +35,7 @@ import net.minecraft.server.level.TicketType;
@@ -16,7 +16,7 @@ index a4157bc24c36c63502667d69910108a50114f370..41f50fcd74f878cf5d40bd5818465f1c
  import org.bukkit.plugin.Plugin;
  import org.slf4j.Logger;
  import java.io.IOException;
-@@ -1068,7 +1069,10 @@ public final class ChunkHolderManager {
+@@ -1059,7 +1060,10 @@ public final class ChunkHolderManager {
      private final AtomicLong poiLoadCounter = new AtomicLong();
  
      public PoiChunk loadPoiChunk(final int chunkX, final int chunkZ) {

@@ -435,7 +435,7 @@ index 74483543836d9ed042cc7b9cbbde8d58d6994475..cd82703d47bf0f2457b5698b5bb08e83
      }
  
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index a16fc5ba55dbde0cf7f968884da40d70a754a0d8..3252e4a1f84e3921027d95d2919f0baf45c9c96b 100644
+index 81749b8da7182abd1bf35629f33388e813dbeac0..fab03f244f90e479ce7744a568e999327499b7fe 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
 @@ -178,6 +178,8 @@ import org.bukkit.event.weather.LightningStrikeEvent;
@@ -447,7 +447,7 @@ index a16fc5ba55dbde0cf7f968884da40d70a754a0d8..3252e4a1f84e3921027d95d2919f0baf
  
  public class ServerLevel extends Level implements WorldGenLevel {
  
-@@ -807,6 +809,7 @@ public class ServerLevel extends Level implements WorldGenLevel {
+@@ -806,6 +808,7 @@ public class ServerLevel extends Level implements WorldGenLevel {
              chunkgenerator = new org.bukkit.craftbukkit.generator.CustomChunkGenerator(this, chunkgenerator, gen);
          }
          // CraftBukkit end
@@ -456,10 +456,10 @@ index a16fc5ba55dbde0cf7f968884da40d70a754a0d8..3252e4a1f84e3921027d95d2919f0baf
          DataFixer datafixer = minecraftserver.getFixerUpper();
          this.entityStorage = new EntityRegionFileStorage(convertable_conversionsession.getDimensionPath(resourcekey).resolve("entities"), flag2); // Paper - rewrite chunk system  //EntityPersistentStorage<Entity> entitypersistentstorage = new EntityStorage(this, convertable_conversionsession.getDimensionPath(resourcekey).resolve("entities"), datafixer, flag2, minecraftserver);
 diff --git a/src/main/java/net/minecraft/world/entity/monster/Slime.java b/src/main/java/net/minecraft/world/entity/monster/Slime.java
-index 2502cb476032c6a247132ce2e427721d6c9f8ce4..20ce257b47f2cd062c92169511715ab4f5a23621 100644
+index 3d9107d2c19a09215445aa0e0aacc32f9f82a536..14f6cb1a70a6446c907f418ee3289b2190219314 100644
 --- a/src/main/java/net/minecraft/world/entity/monster/Slime.java
 +++ b/src/main/java/net/minecraft/world/entity/monster/Slime.java
-@@ -349,7 +349,7 @@ public class Slime extends Mob implements Enemy {
+@@ -357,7 +357,7 @@ public class Slime extends Mob implements Enemy {
                  }
  
                  ChunkPos chunkcoordintpair = new ChunkPos(pos);
@@ -811,10 +811,10 @@ index 02e58161a0f5915084230831ee03050d762b67d2..75ef65ce0a0a6c9d709faa7f974b068e
          return worldgenRandom.nextInt((int)(1.0F / frequency)) == 0;
      }
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftChunk.java b/src/main/java/org/bukkit/craftbukkit/CraftChunk.java
-index fd702027e62eb38d51fb7c46ef268e9bb94e1e92..f3262940498909734a87f6fbb8c552c2ca53a60d 100644
+index dca5f25cf331b5550e9be491b4e8a3466531e021..1393a0cf38f5b13dc5c97bc1984a7c552c8b78ff 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftChunk.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftChunk.java
-@@ -200,7 +200,7 @@ public class CraftChunk implements Chunk {
+@@ -202,7 +202,7 @@ public class CraftChunk implements Chunk {
      @Override
      public boolean isSlimeChunk() {
          // 987234911L is deterimined in EntitySlime when seeing if a slime can spawn in a chunk
@@ -824,7 +824,7 @@ index fd702027e62eb38d51fb7c46ef268e9bb94e1e92..f3262940498909734a87f6fbb8c552c2
  
      @Override
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 4a87a64acece79d43f495b6a5f1553273bcca6ce..3b1046cc413d502c518c525a72c74a2d248da22d 100644
+index 0e5af78778cab677c24b508f293cfbdaffb433d6..e0d1a56bbc15b12326aaf55c7d00f068de93c458 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -43,6 +43,9 @@ import java.util.logging.Logger;
@@ -837,7 +837,7 @@ index 4a87a64acece79d43f495b6a5f1553273bcca6ce..3b1046cc413d502c518c525a72c74a2d
  import net.minecraft.advancements.AdvancementHolder;
  import net.minecraft.commands.CommandSourceStack;
  import net.minecraft.commands.Commands;
-@@ -1371,7 +1374,7 @@ public final class CraftServer implements Server {
+@@ -1388,7 +1391,7 @@ public final class CraftServer implements Server {
              iregistry = leveldataanddimensions.dimensions().dimensions();
          } else {
              LevelSettings worldsettings;

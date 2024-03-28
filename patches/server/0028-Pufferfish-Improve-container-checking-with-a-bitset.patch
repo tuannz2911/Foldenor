@@ -255,10 +255,10 @@ index d6cbe98e67fdbf8db46338a88ab1356dd63b50a3..42f1f8170501b84b00d90328560caea0
      default boolean canPlaceItem(int slot, ItemStack stack) {
          return true;
 diff --git a/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java b/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
-index 6d23c39e4eadf23616080d6d08672e13b5d3c37d..2dd0541a0ae74477758e0cea1eb2c9b6cbe4ca1e 100644
+index 756d0434472921992c9d84597d7c9c824e93614c..2b3cd3bb854b928f3a3d5a1a100b03ccc3e450ac 100644
 --- a/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
 +++ b/src/main/java/net/minecraft/world/entity/vehicle/AbstractMinecartContainer.java
-@@ -28,6 +28,7 @@ import org.bukkit.inventory.InventoryHolder;
+@@ -29,6 +29,7 @@ import org.bukkit.inventory.InventoryHolder;
  public abstract class AbstractMinecartContainer extends AbstractMinecart implements ContainerEntity {
  
      private NonNullList<ItemStack> itemStacks;
@@ -266,7 +266,7 @@ index 6d23c39e4eadf23616080d6d08672e13b5d3c37d..2dd0541a0ae74477758e0cea1eb2c9b6
      @Nullable
      public ResourceLocation lootTable;
      public long lootTableSeed;
-@@ -89,7 +90,9 @@ public abstract class AbstractMinecartContainer extends AbstractMinecart impleme
+@@ -90,7 +91,9 @@ public abstract class AbstractMinecartContainer extends AbstractMinecart impleme
  
      protected AbstractMinecartContainer(EntityType<?> type, Level world) {
          super(type, world);
@@ -277,7 +277,7 @@ index 6d23c39e4eadf23616080d6d08672e13b5d3c37d..2dd0541a0ae74477758e0cea1eb2c9b6
      }
  
      protected AbstractMinecartContainer(EntityType<?> type, double x, double y, double z, Level world) {
-@@ -156,6 +159,8 @@ public abstract class AbstractMinecartContainer extends AbstractMinecart impleme
+@@ -164,6 +167,8 @@ public abstract class AbstractMinecartContainer extends AbstractMinecart impleme
      protected void readAdditionalSaveData(CompoundTag nbt) {
          super.readAdditionalSaveData(nbt);
          this.lootableData.loadNbt(nbt); // Paper
@@ -357,7 +357,7 @@ index 9b1243d96e0694c62fc9e82e9be540bce0d2b3ad..cac09c4563d54dbd4098d0a4a113b5ce
  
      @Override
 diff --git a/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEntity.java
-index 26ff1a3d07c92f7035020d08d35116f7feede600..93156b55206ee1d1774afa2a19134fc443af8a72 100644
+index 4fe1b822b4c280de9d5b46c1dc965045791c83d0..93a36218faa95c52bdd1326e8c0050014b38e837 100644
 --- a/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEntity.java
 +++ b/src/main/java/net/minecraft/world/level/block/entity/HopperBlockEntity.java
 @@ -6,6 +6,7 @@ import java.util.function.BooleanSupplier;
@@ -368,15 +368,15 @@ index 26ff1a3d07c92f7035020d08d35116f7feede600..93156b55206ee1d1774afa2a19134fc4
  import net.minecraft.core.BlockPos;
  import net.minecraft.core.Direction;
  import net.minecraft.core.NonNullList;
-@@ -48,6 +49,7 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
-     public static final int MOVE_ITEM_SPEED = 8;
+@@ -50,6 +51,7 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
      public static final int HOPPER_CONTAINER_SIZE = 5;
      private NonNullList<ItemStack> items;
+     public int cooldownTime;
 +    private gg.airplane.structs.ItemListWithBitset optimizedItems;
-     private int cooldownTime;
      private long tickedGameTime;
  
-@@ -83,14 +85,33 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
+     // CraftBukkit start - add fields and methods
+@@ -84,14 +86,33 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
  
      public HopperBlockEntity(BlockPos pos, BlockState state) {
          super(BlockEntityType.HOPPER, pos, state);
@@ -412,7 +412,7 @@ index 26ff1a3d07c92f7035020d08d35116f7feede600..93156b55206ee1d1774afa2a19134fc4
          if (!this.tryLoadLootTable(nbt)) {
              ContainerHelper.loadAllItems(nbt, this.items);
          }
-@@ -426,6 +447,7 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
+@@ -427,6 +448,7 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
          }
          return true;
      }
@@ -420,7 +420,7 @@ index 26ff1a3d07c92f7035020d08d35116f7feede600..93156b55206ee1d1774afa2a19134fc4
      private static final java.util.function.BiPredicate<ItemStack, Integer> STACK_SIZE_TEST = (itemstack, i) -> itemstack.getCount() >= itemstack.getMaxStackSize();
      private static final java.util.function.BiPredicate<ItemStack, Integer> IS_EMPTY_TEST = (itemstack, i) -> itemstack.isEmpty();
      // Paper end - Perf: Optimize Hoppers
-@@ -470,7 +492,7 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
+@@ -471,7 +493,7 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
                  //         }
                  //         int origCount = event.getItem().getAmount(); // Spigot
                  //         ItemStack itemstack1 = HopperBlockEntity.addItem(iinventory, iinventory1, CraftItemStack.asNMSCopy(event.getItem()), enumdirection);
@@ -429,7 +429,7 @@ index 26ff1a3d07c92f7035020d08d35116f7feede600..93156b55206ee1d1774afa2a19134fc4
  
                  //         if (itemstack1.isEmpty()) {
                  //             iinventory1.setChanged();
-@@ -515,7 +537,8 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
+@@ -516,7 +538,8 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
      }
  
      private static boolean isEmptyContainer(Container inv, Direction facing) {
@@ -439,7 +439,7 @@ index 26ff1a3d07c92f7035020d08d35116f7feede600..93156b55206ee1d1774afa2a19134fc4
      }
  
      public static boolean suckInItems(Level world, Hopper hopper) {
-@@ -597,11 +620,11 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
+@@ -598,11 +621,11 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
              // if (event.isCancelled()) {
              //     iinventory.setItem(i, itemstack1);
  
@@ -455,7 +455,7 @@ index 26ff1a3d07c92f7035020d08d35116f7feede600..93156b55206ee1d1774afa2a19134fc4
              // }
              // int origCount = event.getItem().getAmount(); // Spigot
              // ItemStack itemstack2 = HopperBlockEntity.addItem(iinventory, ihopper, CraftItemStack.asNMSCopy(event.getItem()), null);
-@@ -716,7 +739,8 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
+@@ -717,7 +740,8 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
  
          if (HopperBlockEntity.canPlaceItemInContainer(to, stack, slot, side)) {
              boolean flag = false;
@@ -465,7 +465,7 @@ index 26ff1a3d07c92f7035020d08d35116f7feede600..93156b55206ee1d1774afa2a19134fc4
  
              if (itemstack1.isEmpty()) {
                  // Spigot start - SPIGOT-6693, InventorySubcontainer#setItem
-@@ -840,12 +864,13 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
+@@ -841,12 +865,13 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
          // Paper start - Perf: Optimize Hoppers
          return HopperBlockEntity.getContainerAt(world, x, y, z, false);
      }
@@ -480,7 +480,7 @@ index 26ff1a3d07c92f7035020d08d35116f7feede600..93156b55206ee1d1774afa2a19134fc4
          BlockState iblockdata = world.getBlockState(blockposition);
          Block block = iblockdata.getBlock();
  
-@@ -911,7 +936,9 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
+@@ -912,7 +937,9 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
  
      @Override
      protected void setItems(NonNullList<ItemStack> list) {
@@ -492,7 +492,7 @@ index 26ff1a3d07c92f7035020d08d35116f7feede600..93156b55206ee1d1774afa2a19134fc4
  
      public static void entityInside(Level world, BlockPos pos, BlockState state, Entity entity, HopperBlockEntity blockEntity) {
 diff --git a/src/main/java/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
-index a94300a457b25f0e33a8eeabba6dd5720ca9ab1e..f55c96985990cdd470513ece0fd4a96c15bfeca0 100644
+index f52ccd4f3e062af3c7cc6eaea5b074a3bbd21690..13ebc0415276c4866435ab852ab42baf763635b5 100644
 --- a/src/main/java/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
 +++ b/src/main/java/net/minecraft/world/level/block/entity/RandomizableContainerBlockEntity.java
 @@ -94,13 +94,13 @@ public abstract class RandomizableContainerBlockEntity extends BaseContainerBloc
