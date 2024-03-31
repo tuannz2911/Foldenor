@@ -5,10 +5,10 @@ Subject: [PATCH] Gale-Optimize-sun-burn-tick
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
-index 211f106a24e2ce73668614552010921a9ec02d61..34a0e80dc00e568af341af78930075bd7983286b 100644
+index 479a52491b884ac99738a67b187e1f12ba7eb6b7..8dfe609d58b44f5ea3c28b7956182aa2d5a46404 100644
 --- a/src/main/java/net/minecraft/world/entity/Entity.java
 +++ b/src/main/java/net/minecraft/world/entity/Entity.java
-@@ -2033,7 +2033,11 @@ public abstract class Entity implements Nameable, EntityAccess, CommandSource, S
+@@ -2036,7 +2036,11 @@ public abstract class Entity implements Nameable, EntityAccess, CommandSource, S
      /** @deprecated */
      @Deprecated
      public float getLightLevelDependentMagicValue() {

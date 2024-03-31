@@ -5,10 +5,10 @@ Subject: [PATCH] Pufferfish-Cache-climbing-check-for-activation
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/LivingEntity.java b/src/main/java/net/minecraft/world/entity/LivingEntity.java
-index cced2d25936eed5360716c8c25e4ca87f9150017..fc9a1c8e78ddb15392c68a65aaf1674b1b379cf1 100644
+index fdb5ef574c14fafa1af50f4f656763119695f00e..02bdcff43918be037255d6050497d01c1e7d697a 100644
 --- a/src/main/java/net/minecraft/world/entity/LivingEntity.java
 +++ b/src/main/java/net/minecraft/world/entity/LivingEntity.java
-@@ -2035,6 +2035,17 @@ public abstract class LivingEntity extends Entity implements Attackable {
+@@ -2043,6 +2043,17 @@ public abstract class LivingEntity extends Entity implements Attackable {
          return this.lastClimbablePos;
      }
  
