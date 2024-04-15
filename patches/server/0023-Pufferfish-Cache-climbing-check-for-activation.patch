@@ -5,7 +5,7 @@ Subject: [PATCH] Pufferfish-Cache-climbing-check-for-activation
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/LivingEntity.java b/src/main/java/net/minecraft/world/entity/LivingEntity.java
-index fdb5ef574c14fafa1af50f4f656763119695f00e..02bdcff43918be037255d6050497d01c1e7d697a 100644
+index b9f6e599afd4bdfb97e7f1b1881730cbed781bba..9ae7519f2a0e97ed83776a788ae26a18509ce2da 100644
 --- a/src/main/java/net/minecraft/world/entity/LivingEntity.java
 +++ b/src/main/java/net/minecraft/world/entity/LivingEntity.java
 @@ -2043,6 +2043,17 @@ public abstract class LivingEntity extends Entity implements Attackable {
@@ -27,10 +27,10 @@ index fdb5ef574c14fafa1af50f4f656763119695f00e..02bdcff43918be037255d6050497d01c
          if (this.isSpectator()) {
              return false;
 diff --git a/src/main/java/org/spigotmc/ActivationRange.java b/src/main/java/org/spigotmc/ActivationRange.java
-index f8718d91f4c15c74d6e6dd5f60f7f05f45f63655..877e6286fd4860e4270fee3ddb79a5f4041343b7 100644
+index 4fc4690d03fd5f39e019f16845954052210c7361..da3b09b92c804ee4b98421dbac4165c0b8fdf529 100644
 --- a/src/main/java/org/spigotmc/ActivationRange.java
 +++ b/src/main/java/org/spigotmc/ActivationRange.java
-@@ -305,7 +305,7 @@ public class ActivationRange
+@@ -307,7 +307,7 @@ public class ActivationRange
          if ( entity instanceof LivingEntity )
          {
              LivingEntity living = (LivingEntity) entity;

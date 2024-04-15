@@ -4,22 +4,6 @@ Date: Sat, 16 Sep 2023 21:20:41 +0400
 Subject: [PATCH] Add-config
 
 
-diff --git a/build.gradle.kts b/build.gradle.kts
-index 0b66ac537a56f907022f615c47ea970c7b26bbf3..f2c473a22cf33a1783f7daec578da5b08caf4878 100644
---- a/build.gradle.kts
-+++ b/build.gradle.kts
-@@ -213,9 +213,9 @@ val runtimeClasspathForRunDev = sourceSets.main.flatMap { src ->
-         elements.filterNot { file -> file.asFile.endsWith("minecraft.jar") }
-     }
- }
--tasks.registerRunTask("runDev") {
-+/*tasks.registerRunTask("runDev") {
-     description = "Spin up a non-relocated Mojang-mapped test server"
-     classpath(tasks.filterProjectDir.flatMap { it.outputJar })
-     classpath(runtimeClasspathForRunDev)
-     jvmArgs("-DPaper.isRunDev=true")
--}
-+}*/
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 new file mode 100644
 index 0000000000000000000000000000000000000000..748a78a092067ccb2c9ebb650860765180703b8f
