@@ -2,7 +2,7 @@ name: Patch and Build
 
 on:
   push:
-    branches: [ "1.20.4" ]
+    branches: [ "1.20.6" ]
   workflow_dispatch:
   #workflow_run:
     #workflows: ["Automatically update Folia commit"]
@@ -10,7 +10,7 @@ on:
      # - completed
 
 jobs:
-  compile_1_20_4_core_jar:
+  compile_1_20_6_core_jar:
     runs-on: windows-latest
     
     permissions:
@@ -46,11 +46,11 @@ jobs:
       - name: Make release
         uses: softprops/action-gh-release@v1
         with:
-          name: "1.20.4 build"
+          name: "1.20.6 build"
           body: |
             Foldenor build
-            Version: 1.20.4
-          tag_name: "1.20.4_${{github.run_number}}"
+            Version: 1.20.6
+          tag_name: "1.20.6_${{github.run_number}}"
           files: build/libs/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
