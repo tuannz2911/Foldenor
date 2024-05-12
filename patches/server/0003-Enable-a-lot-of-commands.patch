@@ -5,10 +5,10 @@ Subject: [PATCH] Enable-a-lot-of-commands
 
 
 diff --git a/src/main/java/net/minecraft/commands/Commands.java b/src/main/java/net/minecraft/commands/Commands.java
-index 2f4986196f446b789f6a0bcefc9db13f3d34d698..d78af31a54ba38a0a32a6bd0b656e899c0992ce5 100644
+index e53dba6d265007d556d85f6007643b26ba77083b..dc71a4796a526d395ba310f5ab63d2b8db41ecca 100644
 --- a/src/main/java/net/minecraft/commands/Commands.java
 +++ b/src/main/java/net/minecraft/commands/Commands.java
-@@ -163,8 +163,8 @@ public class Commands {
+@@ -164,8 +164,8 @@ public class Commands {
          ClearInventoryCommands.register(this.dispatcher, commandRegistryAccess);
          //CloneCommands.register(this.dispatcher, commandRegistryAccess); // Folia - region threading - TODO
          DamageCommand.register(this.dispatcher, commandRegistryAccess);
@@ -19,7 +19,7 @@ index 2f4986196f446b789f6a0bcefc9db13f3d34d698..d78af31a54ba38a0a32a6bd0b656e899
          //DebugCommand.register(this.dispatcher); // Folia - region threading - TODO
          DefaultGameModeCommands.register(this.dispatcher);
          DifficultyCommand.register(this.dispatcher);
-@@ -175,7 +175,7 @@ public class Commands {
+@@ -176,7 +176,7 @@ public class Commands {
          FillCommand.register(this.dispatcher, commandRegistryAccess);
          FillBiomeCommand.register(this.dispatcher, commandRegistryAccess);
          ForceLoadCommand.register(this.dispatcher);
@@ -28,7 +28,7 @@ index 2f4986196f446b789f6a0bcefc9db13f3d34d698..d78af31a54ba38a0a32a6bd0b656e899
          GameModeCommand.register(this.dispatcher);
          GameRuleCommand.register(this.dispatcher);
          GiveCommand.register(this.dispatcher, commandRegistryAccess);
-@@ -194,19 +194,19 @@ public class Commands {
+@@ -195,19 +195,19 @@ public class Commands {
          //ReloadCommand.register(this.dispatcher); // Folia - region threading
          RecipeCommand.register(this.dispatcher);
          //ReturnCommand.register(this.dispatcher); // Folia - region threading - TODO later
@@ -36,8 +36,8 @@ index 2f4986196f446b789f6a0bcefc9db13f3d34d698..d78af31a54ba38a0a32a6bd0b656e899
 +        RideCommand.register(this.dispatcher); // Folia - region threading - TODO later
          SayCommand.register(this.dispatcher);
          //ScheduleCommand.register(this.dispatcher); // Folia - region threading
--        //ScoreboardCommand.register(this.dispatcher); // Folia - region threading - TODO later
-+        ScoreboardCommand.register(this.dispatcher); // Folia - region threading - TODO later
+-        //ScoreboardCommand.register(this.dispatcher, commandRegistryAccess); // Folia - region threading - TODO later
++        ScoreboardCommand.register(this.dispatcher, commandRegistryAccess); // Folia - region threading - TODO later
          SeedCommand.register(this.dispatcher, environment != Commands.CommandSelection.INTEGRATED);
          SetBlockCommand.register(this.dispatcher, commandRegistryAccess);
          SetSpawnCommand.register(this.dispatcher);
@@ -49,6 +49,6 @@ index 2f4986196f446b789f6a0bcefc9db13f3d34d698..d78af31a54ba38a0a32a6bd0b656e899
          SummonCommand.register(this.dispatcher, commandRegistryAccess);
 -        //TagCommand.register(this.dispatcher); // Folia - region threading - TODO later
 +        TagCommand.register(this.dispatcher); // Folia - region threading - TODO later
-         //TeamCommand.register(this.dispatcher); // Folia - region threading - TODO later
+         //TeamCommand.register(this.dispatcher, commandRegistryAccess); // Folia - region threading - TODO later
          //TeamMsgCommand.register(this.dispatcher); // Folia - region threading - TODO later
          TeleportCommand.register(this.dispatcher);

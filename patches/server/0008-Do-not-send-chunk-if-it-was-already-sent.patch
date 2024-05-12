@@ -5,10 +5,10 @@ Subject: [PATCH] Do-not-send-chunk-if-it-was-already-sent
 
 
 diff --git a/src/main/java/io/papermc/paper/chunk/system/RegionizedPlayerChunkLoader.java b/src/main/java/io/papermc/paper/chunk/system/RegionizedPlayerChunkLoader.java
-index 07abf5a326cc7aa8a449b74bd7ac8a43b98528c0..8c2357a79904da05bdb4fbbbc9230664aae809a5 100644
+index 239475187fdf0d05823b31e2068651559d3497e5..d4ded2324d4c1c2ec3a105fa24facef1d5d57cdc 100644
 --- a/src/main/java/io/papermc/paper/chunk/system/RegionizedPlayerChunkLoader.java
 +++ b/src/main/java/io/papermc/paper/chunk/system/RegionizedPlayerChunkLoader.java
-@@ -480,6 +480,10 @@ public class RegionizedPlayerChunkLoader {
+@@ -421,6 +421,10 @@ public class RegionizedPlayerChunkLoader {
          }
  
          private void sendChunk(final int chunkX, final int chunkZ) {

@@ -5,7 +5,7 @@ Subject: [PATCH] Pufferfish-Only-check-for-spooky-season-once-an-hour
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/ambient/Bat.java b/src/main/java/net/minecraft/world/entity/ambient/Bat.java
-index 44fa2d4f90389f5526746bd94a2450c03340bd0b..b1932466a8cb301f86b1244ed6caa47b341c301d 100644
+index dc27ddf5131e7398a5390a5187261d4c7fb6ccaa..daf1ca43b154dbff5ceb16c2366473fa3de260f8 100644
 --- a/src/main/java/net/minecraft/world/entity/ambient/Bat.java
 +++ b/src/main/java/net/minecraft/world/entity/ambient/Bat.java
 @@ -3,6 +3,10 @@ package net.minecraft.world.entity.ambient;
@@ -19,32 +19,7 @@ index 44fa2d4f90389f5526746bd94a2450c03340bd0b..b1932466a8cb301f86b1244ed6caa47b
  import net.minecraft.core.BlockPos;
  import net.minecraft.nbt.CompoundTag;
  import net.minecraft.network.syncher.EntityDataAccessor;
-@@ -95,10 +99,12 @@ public class Bat extends AmbientCreature {
-     }
- 
-     @Override
--    protected void doPush(Entity entity) {}
-+    protected void doPush(Entity entity) {
-+    }
- 
-     @Override
--    protected void pushEntities() {}
-+    protected void pushEntities() {
-+    }
- 
-     public static AttributeSupplier.Builder createAttributes() {
-         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 6.0D);
-@@ -192,7 +198,8 @@ public class Bat extends AmbientCreature {
-     }
- 
-     @Override
--    protected void checkFallDamage(double heightDifference, boolean onGround, BlockState state, BlockPos landedPosition) {}
-+    protected void checkFallDamage(double heightDifference, boolean onGround, BlockState state, BlockPos landedPosition) {
-+    }
- 
-     @Override
-     public boolean isIgnoringBlockTriggers() {
-@@ -241,12 +248,24 @@ public class Bat extends AmbientCreature {
+@@ -239,12 +243,24 @@ public class Bat extends AmbientCreature {
          }
      }
  
@@ -63,8 +38,8 @@ index 44fa2d4f90389f5526746bd94a2450c03340bd0b..b1932466a8cb301f86b1244ed6caa47b
 +        final long tickCount = region.getData().getCurrentTick();
 +        if (tickCount - lastSpookyCheck > ONE_HOUR) {
 +            LocalDate localdate = LocalDate.now();
-+            int i = localdate.get(ChronoField.DAY_OF_MONTH);
-+            int j = localdate.get(ChronoField.MONTH_OF_YEAR);
++            int i = localdate.getDayOfMonth();
++            int j = localdate.getMonth().getValue();
 +
 +            //return j == 10 && i >= 20 || j == 11 && i <= 3;
 +            isSpookySeason = j == 10 && i >= 20 || j == 11 && i <= 3;
@@ -73,4 +48,4 @@ index 44fa2d4f90389f5526746bd94a2450c03340bd0b..b1932466a8cb301f86b1244ed6caa47b
 +        return isSpookySeason;
      }
  
-     @Override
+     private void setupAnimationStates() {

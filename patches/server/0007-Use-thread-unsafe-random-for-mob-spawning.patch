@@ -5,10 +5,10 @@ Subject: [PATCH] Use-thread-unsafe-random-for-mob-spawning
 
 
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index fab03f244f90e479ce7744a568e999327499b7fe..8f8f6d068058b15e7854b9f91ba2ce9a48f2c7a5 100644
+index 8d1d64841b8c6dbc7f34c6d1aab5d779764b8fad..5d9b9a04dc922ce6f940df3cfe47a0a9bcb92e40 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
-@@ -1114,7 +1114,8 @@ public class ServerLevel extends Level implements WorldGenLevel {
+@@ -1119,7 +1119,8 @@ public class ServerLevel extends Level implements WorldGenLevel {
      }
      // Paper start - optimise random block ticking
      private final ThreadLocal<BlockPos.MutableBlockPos> chunkTickMutablePosition = ThreadLocal.withInitial(() -> new BlockPos.MutableBlockPos()); // Folia - region threading
@@ -19,10 +19,10 @@ index fab03f244f90e479ce7744a568e999327499b7fe..8f8f6d068058b15e7854b9f91ba2ce9a
  
      public void tickChunk(LevelChunk chunk, int randomTickSpeed) {
 diff --git a/src/main/java/net/minecraft/world/level/NaturalSpawner.java b/src/main/java/net/minecraft/world/level/NaturalSpawner.java
-index 9c1263fdc3731e04ac28c6d0ed904ecdc3ea3038..a664a701abf2dd011027be157c5839163e3a8a70 100644
+index db64d88dc26f10304bd10f771f811fcbfaa34bc8..5ade8de03794ca19bd04cf29220bd56911110609 100644
 --- a/src/main/java/net/minecraft/world/level/NaturalSpawner.java
 +++ b/src/main/java/net/minecraft/world/level/NaturalSpawner.java
-@@ -425,12 +425,12 @@ public final class NaturalSpawner {
+@@ -408,12 +408,12 @@ public final class NaturalSpawner {
          }
      }
  

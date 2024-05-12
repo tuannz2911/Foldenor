@@ -3,8 +3,7 @@ import io.papermc.paperweight.util.constants.PAPERCLIP_CONFIG
 plugins {
     java
     `maven-publish`
-    id("com.github.johnrengelman.shadow") version "8.1.1" apply false
-    id("io.papermc.paperweight.patcher") version "1.5.13"
+    id("io.papermc.paperweight.patcher") version "1.6.4-SNAPSHOT"
 }
 
 val paperMavenPublicUrl = "https://repo.papermc.io/repository/maven-public/"
@@ -14,12 +13,13 @@ repositories {
     maven(paperMavenPublicUrl) {
         content { onlyForConfigurations(PAPERCLIP_CONFIG) }
     }
+    maven("https://maven.nostal.ink/repository/maven-snapshots/")
 }
 
 dependencies {
-    remapper("net.fabricmc:tiny-remapper:0.10.1:fat")
-    decompiler("org.vineflower:vineflower:1.9.3")
-    paperclip("io.papermc:paperclip:3.0.4-SNAPSHOT")
+    remapper("net.fabricmc:tiny-remapper:0.10.2:fat")
+    decompiler("org.vineflower:vineflower:1.10.1")
+    paperclip("cn.dreeam:quantumleaper:1.0.0-SNAPSHOT")
 }
 
 allprojects {
@@ -58,7 +58,7 @@ allprojects {
 subprojects {
     tasks.withType<JavaCompile> {
         options.encoding = Charsets.UTF_8.name()
-        options.release.set(17)
+        options.release.set(21)
     }
     tasks.withType<Javadoc> {
         options.encoding = Charsets.UTF_8.name()
@@ -85,7 +85,8 @@ paperweight {
         ref.set(providers.gradleProperty("foliaRef"))
 
         withStandardPatcher {
-            baseName("Folia")
+            apiSourceDirPath.set("folia-api")
+            serverSourceDirPath.set("folia-server")
 
             apiPatchDir.set(layout.projectDirectory.dir("patches/api"))
             apiOutputDir.set(layout.projectDirectory.dir("Foldenor-api"))
