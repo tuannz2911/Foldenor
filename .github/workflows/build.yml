@@ -43,7 +43,7 @@ jobs:
       - name: Build MojmapPaperclip
         run: ./gradlew createMojmapPaperclipJar
         
-       - name: Build ReobfPaperclip
+      - name: Build ReobfPaperclip
         run: ./gradlew createReobfPaperclipJar
            
       - name: Make release
