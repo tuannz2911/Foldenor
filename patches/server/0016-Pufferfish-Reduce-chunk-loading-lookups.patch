@@ -1,14 +1,14 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: AltronMaxX <max06112004@gmail.com>
-Date: Thu, 4 Jan 2024 15:21:36 +0400
+Date: Wed, 31 Jul 2024 15:06:27 +0400
 Subject: [PATCH] Pufferfish-Reduce-chunk-loading-lookups
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/monster/EnderMan.java b/src/main/java/net/minecraft/world/entity/monster/EnderMan.java
-index 260202fab3ac300552c557b44dcf251f083c6a78..815af2adf1902dede676389d6fc29376c5cc1df2 100644
+index 828c51477cd8f35d591367b30bf4feef6a250292..506148b9b631af74209d2aca93d98346929d8b1e 100644
 --- a/src/main/java/net/minecraft/world/entity/monster/EnderMan.java
 +++ b/src/main/java/net/minecraft/world/entity/monster/EnderMan.java
-@@ -318,11 +318,18 @@ public class EnderMan extends Monster implements NeutralMob {
+@@ -320,11 +320,18 @@ public class EnderMan extends Monster implements NeutralMob {
      private boolean teleport(double x, double y, double z) {
          BlockPos.MutableBlockPos blockposition_mutableblockposition = new BlockPos.MutableBlockPos(x, y, z);
  

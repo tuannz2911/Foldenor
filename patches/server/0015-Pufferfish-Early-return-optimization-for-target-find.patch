@@ -1,11 +1,11 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: AltronMaxX <max06112004@gmail.com>
-Date: Thu, 4 Jan 2024 15:09:57 +0400
+Date: Wed, 31 Jul 2024 15:05:44 +0400
 Subject: [PATCH] Pufferfish-Early-return-optimization-for-target-find
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/ai/targeting/TargetingConditions.java b/src/main/java/net/minecraft/world/entity/ai/targeting/TargetingConditions.java
-index d2f0c3b26d4beedb49d86e0242d843590d469d02..82fff2cdc61248cab611f96790baa0eeb8517f06 100644
+index aecb0ad814586bfc5e56755ee14379a69388b38c..73ef4a61de0e0f4a4cbc73d2e2ce88f9e63028e8 100644
 --- a/src/main/java/net/minecraft/world/entity/ai/targeting/TargetingConditions.java
 +++ b/src/main/java/net/minecraft/world/entity/ai/targeting/TargetingConditions.java
 @@ -76,9 +76,17 @@ public class TargetingConditions {

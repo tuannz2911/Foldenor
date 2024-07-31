@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: AltronMaxX <max06112004@gmail.com>
-Date: Sat, 16 Sep 2023 21:20:41 +0400
+Date: Wed, 31 Jul 2024 14:37:41 +0400
 Subject: [PATCH] Add-config
 
 
@@ -194,10 +194,10 @@ index 0000000000000000000000000000000000000000..748a78a092067ccb2c9ebb6508607651
 +    }
 +}
 diff --git a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
-index 05bc06fcf508e74c717a7f71a2c7ed7c568e846a..14f0eaf4f579713b1bacbfa655aa1b46d7b0ac8a 100644
+index 301d7fa29fce2997a5881b3852896eff5af33672..a196839396e9a54c449b7dd5f1953a8a16657ba4 100644
 --- a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
 +++ b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
-@@ -19,6 +19,7 @@ import java.util.Locale;
+@@ -20,6 +20,7 @@ import java.util.Locale;
  import java.util.Optional;
  import java.util.function.BooleanSupplier;
  import javax.annotation.Nullable;
@@ -205,10 +205,10 @@ index 05bc06fcf508e74c717a7f71a2c7ed7c568e846a..14f0eaf4f579713b1bacbfa655aa1b46
  import net.minecraft.DefaultUncaughtExceptionHandler;
  import net.minecraft.DefaultUncaughtExceptionHandlerWithName;
  import net.minecraft.SharedConstants;
-@@ -234,6 +235,12 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+@@ -239,6 +240,12 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+         this.server.spark.registerCommandBeforePlugins(this.server); // Paper - spark
          com.destroystokyo.paper.Metrics.PaperMetrics.startMetrics(); // Paper - start metrics
          com.destroystokyo.paper.VersionHistoryManager.INSTANCE.getClass(); // Paper - load version history now
-         io.papermc.paper.brigadier.PaperBrigadierProviderImpl.INSTANCE.getClass(); // Paper - init PaperBrigadierProvider
 +        try {
 +            FoldenorConfig.init((java.io.File) options.valueOf("foldenor-settings"));
 +        } catch (Exception e) {
@@ -219,10 +219,10 @@ index 05bc06fcf508e74c717a7f71a2c7ed7c568e846a..14f0eaf4f579713b1bacbfa655aa1b46
          this.setPvpAllowed(dedicatedserverproperties.pvp);
          this.setFlightAllowed(dedicatedserverproperties.allowFlight);
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index a6ac60de61a5ea8412abafc8a7e830c9741d8729..fb36c72d34ff6b7c4c685cd84fca59b2a8f0fdb9 100644
+index c15f13d532a592cd085942f4a3f4f3234bd7fe6b..fc5f7909d85d99b7fdaceb15d2672e36dcb6a426 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -325,6 +325,10 @@ public final class CraftServer implements Server {
+@@ -326,6 +326,10 @@ public final class CraftServer implements Server {
          return this.asyncScheduler;
      }
  
@@ -233,7 +233,7 @@ index a6ac60de61a5ea8412abafc8a7e830c9741d8729..fb36c72d34ff6b7c4c685cd84fca59b2
      @Override
      public final io.papermc.paper.threadedregions.scheduler.FoliaGlobalRegionScheduler getGlobalRegionScheduler() {
          return this.globalRegionScheduler;
-@@ -1097,6 +1101,7 @@ public final class CraftServer implements Server {
+@@ -1113,6 +1117,7 @@ public final class CraftServer implements Server {
  
          org.spigotmc.SpigotConfig.init((File) this.console.options.valueOf("spigot-settings")); // Spigot
          this.console.paperConfigurations.reloadConfigs(this.console);
@@ -242,10 +242,10 @@ index a6ac60de61a5ea8412abafc8a7e830c9741d8729..fb36c72d34ff6b7c4c685cd84fca59b2
              // world.serverLevelData.setDifficulty(config.difficulty); // Paper - per level difficulty
              world.setSpawnSettings(world.serverLevelData.getDifficulty() != Difficulty.PEACEFUL && config.spawnMonsters, config.spawnAnimals); // Paper - per level difficulty (from MinecraftServer#setDifficulty(ServerLevel, Difficulty, boolean))
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index c988afa496d25314451435eedd64079a0d87cef0..a89e24b3a69c613330f2976a69a4313fb707a9e5 100644
+index 618f4b2e1d012b647b3e7bf359c8ecdd7f159e63..ab575baca2bce12ffa64c9e77a828f0ac8538486 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
-@@ -175,6 +175,12 @@ public class Main {
+@@ -176,6 +176,12 @@ public class Main {
                          .describedAs("Jar file");
                  // Paper end
  

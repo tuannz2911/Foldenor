@@ -2,7 +2,7 @@ name: Patch and Build
 
 on:
   push:
-    branches: [ "1.20.6" ]
+    branches: [ "1.21" ]
   workflow_dispatch:
   #workflow_run:
     #workflows: ["Automatically update Folia commit"]
@@ -10,7 +10,7 @@ on:
      # - completed
 
 jobs:
-  compile_1_20_6_core_jar:
+  compile_1_21_core_jar:
     runs-on: windows-latest
     
     permissions:
@@ -41,16 +41,15 @@ jobs:
         run: ./gradlew applyPatches
    
       - name: Build
-        run: ./gradlew createReobfBundlerJar
+        run: ./gradlew createReobfPaperclipJar createMojmapPaperclipJar
            
       - name: Make release
-        uses: softprops/action-gh-release@v1
+        uses: marvinpinto/action-automatic-releases@master
         with:
-          name: "1.20.6 build"
+          title: "Foldenor 1.21 release"
           body: |
             Foldenor build
-            Version: 1.20.6
-          tag_name: "1.20.6_${{github.run_number}}"
+            Version: 1.21
+          tag_name: "1.21"
           files: build/libs/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"

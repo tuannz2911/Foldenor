@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: AltronMaxX <max06112004@gmail.com>
-Date: Sat, 16 Sep 2023 21:44:05 +0400
+Date: Wed, 31 Jul 2024 14:55:42 +0400
 Subject: [PATCH] Add-Foldenor-commands
 
 
@@ -158,14 +158,14 @@ index 0000000000000000000000000000000000000000..4188e8db6386fe1790192c9efd8c2fe2
 +    }
 +}
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index fb36c72d34ff6b7c4c685cd84fca59b2a8f0fdb9..c07114a23257fb603c66de7e230705ed81d07be6 100644
+index fc5f7909d85d99b7fdaceb15d2672e36dcb6a426..c19b0a9552a642b1ace5b61109d1be6501b4342f 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -1132,6 +1132,7 @@ public final class CraftServer implements Server {
+@@ -1149,6 +1149,7 @@ public final class CraftServer implements Server {
          this.reloadData();
          org.spigotmc.SpigotConfig.registerCommands(); // Spigot
          io.papermc.paper.command.PaperCommands.registerCommands(this.console); // Paper
 +        net.edenor.foldenor.command.FoldenorCommands.registerCommands(this.console);
+         this.spark.registerCommandBeforePlugins(this); // Paper - spark
          this.overrideAllCommandBlockCommands = this.commandsConfiguration.getStringList("command-block-overrides").contains("*");
          this.ignoreVanillaPermissions = this.commandsConfiguration.getBoolean("ignore-vanilla-permissions");
- 

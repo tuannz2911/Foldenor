@@ -5,10 +5,10 @@ Subject: [PATCH] Add-deprecated-tag-to-getScheduler-function
 
 
 diff --git a/src/main/java/org/bukkit/Bukkit.java b/src/main/java/org/bukkit/Bukkit.java
-index b4327a55c422380ca6b3a1dc47c3adbe76de4655..3b9e51b24b029327e09d074706c138f1f7801288 100644
+index 886920b33b37bdefc301f898ad0003e40eff6443..725c3644d941b18ef2288498f27e221d1366c832 100644
 --- a/src/main/java/org/bukkit/Bukkit.java
 +++ b/src/main/java/org/bukkit/Bukkit.java
-@@ -782,8 +782,10 @@ public final class Bukkit {
+@@ -783,8 +783,10 @@ public final class Bukkit {
       * Gets the scheduler for managing scheduled events.
       *
       * @return a scheduling service for this server

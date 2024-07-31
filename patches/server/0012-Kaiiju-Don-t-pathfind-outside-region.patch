@@ -1,18 +1,25 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: AltronMaxX <max06112004@gmail.com>
-Date: Thu, 4 Jan 2024 14:44:03 +0400
+Date: Wed, 31 Jul 2024 15:01:19 +0400
 Subject: [PATCH] Kaiiju-Don-t-pathfind-outside-region
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/ai/behavior/MoveToTargetSink.java b/src/main/java/net/minecraft/world/entity/ai/behavior/MoveToTargetSink.java
-index 2a7a26ca447cc78f24e61a2bf557411c31eb16b2..ea1f4391fd2d4dc6e7c17adc6dd27e31b2fe2203 100644
+index 2a7a26ca447cc78f24e61a2bf557411c31eb16b2..921f9968f5382760d7cc8c7f074ae306f49e149f 100644
 --- a/src/main/java/net/minecraft/world/entity/ai/behavior/MoveToTargetSink.java
 +++ b/src/main/java/net/minecraft/world/entity/ai/behavior/MoveToTargetSink.java
-@@ -120,7 +120,9 @@ public class MoveToTargetSink extends Behavior<Mob> {
+@@ -1,5 +1,6 @@
+ package net.minecraft.world.entity.ai.behavior;
+ 
++import ca.spottedleaf.moonrise.common.util.TickThread;
+ import com.google.common.collect.ImmutableMap;
+ import java.util.Optional;
+ import javax.annotation.Nullable;
+@@ -120,7 +121,9 @@ public class MoveToTargetSink extends Behavior<Mob> {
  
      private boolean tryComputePath(Mob entity, WalkTarget walkTarget, long time) {
          BlockPos blockPos = walkTarget.getTarget().currentBlockPosition();
-+        if (io.papermc.paper.util.TickThread.isTickThreadFor((ServerLevel) entity.level(), blockPos))
++        if (TickThread.isTickThreadFor((ServerLevel) entity.level(), blockPos))
          this.path = entity.getNavigation().createPath(blockPos, 0);
 +        else this.path = null;
          this.speedModifier = walkTarget.getSpeedModifier();

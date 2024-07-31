@@ -1,7 +1,8 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: AltronMaxX <max06112004@gmail.com>
-Date: Thu, 21 Sep 2023 19:35:05 +0400
-Subject: [PATCH] Fix-server-crash-when-teleport-player-while-spectate
+Date: Wed, 31 Jul 2024 14:58:18 +0400
+Subject: [PATCH] 
+ Fix-server-crash-when-teleport-player-while-spectate-in-entity
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/Metrics.java b/src/main/java/com/destroystokyo/paper/Metrics.java
@@ -46,7 +47,7 @@ index 7b31c4ea6d01f936271bdadc3626201dcf32a683..b4dfd7a72c26bfde586c3cf854e7dfe6
                              loc.getX(), loc.getY(), loc.getZ()
                          );
 diff --git a/src/main/java/net/minecraft/server/commands/TeleportCommand.java b/src/main/java/net/minecraft/server/commands/TeleportCommand.java
-index 2450885ef59ad32fbfadfe03f95f9ba24b8a6886..2b56c1ccdd2bbb86332002c769fb461c31855a60 100644
+index 4a13ac9f5342a1b8dc155431eb33f045f87c9196..48fd150de5c30ee87030eec3ca5256fc8cd66245 100644
 --- a/src/main/java/net/minecraft/server/commands/TeleportCommand.java
 +++ b/src/main/java/net/minecraft/server/commands/TeleportCommand.java
 @@ -32,6 +32,7 @@ import net.minecraft.world.entity.RelativeMovement;

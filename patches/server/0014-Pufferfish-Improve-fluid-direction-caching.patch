@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: AltronMaxX <max06112004@gmail.com>
-Date: Thu, 4 Jan 2024 14:58:56 +0400
+Date: Wed, 31 Jul 2024 15:05:13 +0400
 Subject: [PATCH] Pufferfish-Improve-fluid-direction-caching
 
 
@@ -147,7 +147,7 @@ index 0000000000000000000000000000000000000000..805d5e7e27f99eafc16c1cbd61049b23
 +    }
 +}
 diff --git a/src/main/java/net/minecraft/world/level/material/FlowingFluid.java b/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
-index c2943d892b067b3f1fb3b93301a092e912d71f08..17d18dca43d806b69327685c21c497ea103854c2 100644
+index 1c0712295695727ee9c4d430d4157b8e17cbd71f..8283733db544d57581b120845ac5b3583cf19032 100644
 --- a/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
 +++ b/src/main/java/net/minecraft/world/level/material/FlowingFluid.java
 @@ -45,13 +45,17 @@ public abstract class FlowingFluid extends Fluid {
@@ -169,15 +169,15 @@ index c2943d892b067b3f1fb3b93301a092e912d71f08..17d18dca43d806b69327685c21c497ea
      });
      private final Map<FluidState, VoxelShape> shapes = Maps.newIdentityHashMap();
  
-@@ -251,6 +255,7 @@ public abstract class FlowingFluid extends Fluid {
-             return false;
-         }
-         // Paper end - optimise collisions
+@@ -240,6 +244,7 @@ public abstract class FlowingFluid extends Fluid {
+     }
+ 
+     private boolean canPassThroughWall(Direction face, BlockGetter world, BlockPos pos, BlockState state, BlockPos fromPos, BlockState fromState) {
 +        /*
          Object2ByteLinkedOpenHashMap object2bytelinkedopenhashmap;
  
          if (!state.getBlock().hasDynamicShape() && !fromState.getBlock().hasDynamicShape()) {
-@@ -258,9 +263,17 @@ public abstract class FlowingFluid extends Fluid {
+@@ -247,9 +252,17 @@ public abstract class FlowingFluid extends Fluid {
          } else {
              object2bytelinkedopenhashmap = null;
          }
@@ -195,7 +195,7 @@ index c2943d892b067b3f1fb3b93301a092e912d71f08..17d18dca43d806b69327685c21c497ea
          if (object2bytelinkedopenhashmap != null) {
              block_a = new Block.BlockStatePairKey(state, fromState, face);
              byte b0 = object2bytelinkedopenhashmap.getAndMoveToFirst(block_a);
-@@ -271,18 +284,35 @@ public abstract class FlowingFluid extends Fluid {
+@@ -260,18 +273,35 @@ public abstract class FlowingFluid extends Fluid {
          } else {
              block_a = null;
          }

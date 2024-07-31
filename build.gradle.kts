@@ -1,9 +1,8 @@
-import io.papermc.paperweight.util.constants.PAPERCLIP_CONFIG
 
 plugins {
     java
     `maven-publish`
-    id("io.papermc.paperweight.patcher") version "1.6.4-SNAPSHOT"
+    id("io.papermc.paperweight.patcher") version "1.7.1"
 }
 
 val paperMavenPublicUrl = "https://repo.papermc.io/repository/maven-public/"
@@ -11,15 +10,15 @@ val paperMavenPublicUrl = "https://repo.papermc.io/repository/maven-public/"
 repositories {
     mavenCentral()
     maven(paperMavenPublicUrl) {
-        content { onlyForConfigurations(PAPERCLIP_CONFIG) }
+        content { onlyForConfigurations(configurations.paperclip.name) }
     }
     maven("https://maven.nostal.ink/repository/maven-snapshots/")
 }
 
 dependencies {
-    remapper("net.fabricmc:tiny-remapper:0.10.2:fat")
+    remapper("net.fabricmc:tiny-remapper:0.10.3:fat")
     decompiler("org.vineflower:vineflower:1.10.1")
-    paperclip("cn.dreeam:quantumleaper:1.0.0-SNAPSHOT")
+    paperclip("io.papermc:paperclip:3.0.3")
 }
 
 allprojects {
@@ -30,13 +29,9 @@ allprojects {
         toolchain {
             languageVersion.set(JavaLanguageVersion.of(21))
         }
-
-        //Just need for test for jitpack
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
     }
 
-    publishing {
+    /*publishing {
         repositories {
             maven {
                 name = "githubPackage"
@@ -52,7 +47,7 @@ allprojects {
                 from(components["java"])
             }
         }
-    }
+    }*/
 }
 
 subprojects {
@@ -70,7 +65,6 @@ subprojects {
     repositories {
         mavenCentral()
         maven(paperMavenPublicUrl)
-        maven("https://jitpack.io")
     }
 }
 
