@@ -40,8 +40,11 @@ jobs:
       - name: Apply Patches
         run: ./gradlew applyPatches
    
-      - name: Build
+      - name: Build MojmapPaperclip
         run: ./gradlew createMojmapPaperclipJar
+        
+       - name: Build ReobfPaperclip
+        run: ./gradlew createReobfPaperclipJar
            
       - name: Make release
         uses: marvinpinto/action-automatic-releases@master
