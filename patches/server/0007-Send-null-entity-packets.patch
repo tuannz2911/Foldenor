@@ -4,6 +4,38 @@ Date: Wed, 31 Jul 2024 14:54:16 +0400
 Subject: [PATCH] Send-null-entity-packets
 
 
+diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
+index 344a70e3c1274936d218757059c713bf9e75603b..c8c6631093ff2ebd23527e80778b35f9c44cc8bf 100644
+--- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
++++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
+@@ -23,6 +23,8 @@ public class FoldenorConfig {
+     public static int version;
+     static boolean verbose;
+ 
++    public static boolean sendNullEntityPackets = false;
++
+     public static void init(File configFile) {
+         init(configFile, true);
+     }
+@@ -63,6 +65,7 @@ public class FoldenorConfig {
+     }
+ 
+     static void readConfig() {
++        readNetworkSettings();
+ 
+         try {
+             config.save(CONFIG_FILE);
+@@ -71,6 +74,10 @@ public class FoldenorConfig {
+         }
+     }
+ 
++    protected static void readNetworkSettings(){
++        sendNullEntityPackets = getBoolean("network.send-null-entity-packets", sendNullEntityPackets);
++    }
++
+     protected static void set(String path, Object val) {
+         config.addDefault(path, val);
+         config.set(path, val);
 diff --git a/src/main/java/net/minecraft/server/level/ServerEntity.java b/src/main/java/net/minecraft/server/level/ServerEntity.java
 index 8ea2f24695f5dad55e21f238b69442513e7a90c6..38ca0acf3a1af7dcdd9e87e6d9e2e14c6d3fad41 100644
 --- a/src/main/java/net/minecraft/server/level/ServerEntity.java

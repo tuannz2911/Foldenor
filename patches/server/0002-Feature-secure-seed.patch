@@ -427,10 +427,10 @@ index 135fa024d81b962761f0edc6896a2a507b6981f9..8ec743bbb76e402a2a0b92bdafe49d70
      }
  
 diff --git a/src/main/java/net/minecraft/server/level/ServerLevel.java b/src/main/java/net/minecraft/server/level/ServerLevel.java
-index 72aa1b66950c1111793dad1583c19ac0d7e5823d..66c94c8337a873fcffdeb223d31e7951cc2eab2e 100644
+index 0166d6bd686d68ffdcc42e908b0d1aa41a3bffdf..e1fefb845cd0835be7f7b67dd4ae94758064b513 100644
 --- a/src/main/java/net/minecraft/server/level/ServerLevel.java
 +++ b/src/main/java/net/minecraft/server/level/ServerLevel.java
-@@ -618,6 +618,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ca.spottedleaf.
+@@ -614,6 +614,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ca.spottedleaf.
              chunkgenerator = new org.bukkit.craftbukkit.generator.CustomChunkGenerator(this, chunkgenerator, gen);
          }
          // CraftBukkit end

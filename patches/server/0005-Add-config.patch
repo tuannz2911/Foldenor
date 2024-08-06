@@ -6,10 +6,10 @@ Subject: [PATCH] Add-config
 
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 new file mode 100644
-index 0000000000000000000000000000000000000000..748a78a092067ccb2c9ebb650860765180703b8f
+index 0000000000000000000000000000000000000000..344a70e3c1274936d218757059c713bf9e75603b
 --- /dev/null
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-@@ -0,0 +1,183 @@
+@@ -0,0 +1,162 @@
 +package net.edenor.foldenor.config;
 +
 +import com.google.common.base.Throwables;
@@ -34,14 +34,6 @@ index 0000000000000000000000000000000000000000..748a78a092067ccb2c9ebb6508607651
 +
 +    public static int version;
 +    static boolean verbose;
-+
-+    public static boolean sendNullEntityPackets = true;
-+
-+    public static boolean vanilaEndPortalTeleportation = false;
-+
-+    public static int maxProjectileLoadsPerProjectile = 10;
-+
-+    public static int maxProjectileLoadsPerTick = 10;
 +
 +    public static void init(File configFile) {
 +        init(configFile, true);
@@ -83,30 +75,12 @@ index 0000000000000000000000000000000000000000..748a78a092067ccb2c9ebb6508607651
 +    }
 +
 +    static void readConfig() {
-+        networkSettings();
-+
-+        optimizationSettings();
-+
-+        otherSettings();
 +
 +        try {
 +            config.save(CONFIG_FILE);
 +        } catch (IOException ex) {
 +            Bukkit.getLogger().log(Level.SEVERE, "Could not save " + CONFIG_FILE, ex);
 +        }
-+    }
-+
-+    private static void otherSettings() {
-+        vanilaEndPortalTeleportation = getBoolean("other.vanila-end-portal-teleportation", vanilaEndPortalTeleportation);
-+    }
-+
-+    private static void optimizationSettings() {
-+        maxProjectileLoadsPerProjectile = getInt("optimizations.max_projectile_loads_per_projectile",maxProjectileLoadsPerProjectile);
-+        maxProjectileLoadsPerTick = getInt("optimizations.max_projectile_loads_per_tick",maxProjectileLoadsPerTick);
-+    }
-+
-+    private static void networkSettings() {
-+        sendNullEntityPackets = getBoolean("network.send-null-entity-packets", sendNullEntityPackets);
 +    }
 +
 +    protected static void set(String path, Object val) {
@@ -137,6 +111,11 @@ index 0000000000000000000000000000000000000000..748a78a092067ccb2c9ebb6508607651
 +    protected static <T> List getList(String path, T def, String... comment) {
 +        config.addDefault(path, def);
 +        return config.getList(path, config.getList(path));
++    }
++
++    protected static List<String> getStringList(String path, List<String> def, String... comment) {
++        config.addDefault(path, def);
++        return config.getStringList(path);
 +    }
 +
 +    static Map<String, Object> getMap(String path, Map<String, Object> def, String... comment) {
