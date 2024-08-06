@@ -27,7 +27,7 @@ index b52f7bcc17fba6a3a4376a4bfea17430be9c4a8e..553c02a53b9aed6c851305f1e8859346
  
      private static void readDynamicActivationOfBrains() throws IOException {
 diff --git a/src/main/java/net/minecraft/world/level/block/NetherPortalBlock.java b/src/main/java/net/minecraft/world/level/block/NetherPortalBlock.java
-index eba62f1336697157da94c7dcde389cc2e929bb0b..ca35a2a8a54459c7bfd373eaab6c4ebf6a24ef7b 100644
+index eba62f1336697157da94c7dcde389cc2e929bb0b..918b50e1f17fa2b49e5e7ef48182538ea12aae02 100644
 --- a/src/main/java/net/minecraft/world/level/block/NetherPortalBlock.java
 +++ b/src/main/java/net/minecraft/world/level/block/NetherPortalBlock.java
 @@ -4,6 +4,8 @@ import com.mojang.logging.LogUtils;
@@ -46,7 +46,7 @@ index eba62f1336697157da94c7dcde389cc2e929bb0b..ca35a2a8a54459c7bfd373eaab6c4ebf
 -        if (world.spigotConfig.enableZombiePigmenPortalSpawns && world.dimensionType().natural() && world.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && random.nextInt(2000) < world.getDifficulty().getId()) { // Spigot
 +        if (world.spigotConfig.enableZombiePigmenPortalSpawns && world.dimensionType().natural()
 +            && world.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && random.nextInt(2000) < world.getDifficulty().getId()
-+            && random.nextInt(100) >= FoldenorConfig.piglinSpawnChancePersentInPortal) { // Spigot // Foldenor
++            && random.nextInt(100) <= FoldenorConfig.piglinSpawnChancePersentInPortal) { // Spigot // Foldenor
              while (world.getBlockState(pos).is((Block) this)) {
                  pos = pos.below();
              }
