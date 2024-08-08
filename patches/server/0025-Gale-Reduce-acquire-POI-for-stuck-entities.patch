@@ -5,10 +5,10 @@ Subject: [PATCH] Gale-Reduce-acquire-POI-for-stuck-entities
 
 
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-index 8e901c59e1310d70552b3853d3f5e721aad71a79..f8618b1b7d3ecddd5ac9e1057167050a610f8e54 100644
+index 36cf79632b12c67291ccccfda7341ee543e607c6..3dfc4f1b7fd8b0c968ebfec11525a42588a168e2 100644
 --- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-@@ -41,6 +41,8 @@ public class FoldenorConfig {
+@@ -39,6 +39,8 @@ public class FoldenorConfig {
  
      public static boolean appleskinProtocol = false;
  

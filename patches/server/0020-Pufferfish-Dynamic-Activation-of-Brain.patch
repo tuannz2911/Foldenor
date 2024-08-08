@@ -5,7 +5,7 @@ Subject: [PATCH] Pufferfish-Dynamic-Activation-of-Brain
 
 
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-index 8c8101d47376b9fb13652869401494c8b605620e..c36cac84603cd0c66c332eff8d55e16b7a5d3428 100644
+index c8c6631093ff2ebd23527e80778b35f9c44cc8bf..5b5a2491ec297c87458cf66171f5ed4c1e41e80d 100644
 --- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 @@ -2,6 +2,9 @@ package net.edenor.foldenor.config;
@@ -26,9 +26,9 @@ index 8c8101d47376b9fb13652869401494c8b605620e..c36cac84603cd0c66c332eff8d55e16b
  import java.util.List;
  import java.util.Map;
  import java.util.logging.Level;
-@@ -27,6 +31,14 @@ public class FoldenorConfig {
+@@ -25,6 +29,14 @@ public class FoldenorConfig {
  
-     public static boolean enableSuffocationOptimization = false;
+     public static boolean sendNullEntityPackets = false;
  
 +    // Pufferfish DAB
 +    public static boolean dearEnabled;
@@ -41,9 +41,9 @@ index 8c8101d47376b9fb13652869401494c8b605620e..c36cac84603cd0c66c332eff8d55e16b
      public static void init(File configFile) {
          init(configFile, true);
      }
-@@ -71,6 +83,12 @@ public class FoldenorConfig {
- 
-         readOptimizationSettings();
+@@ -67,6 +79,12 @@ public class FoldenorConfig {
+     static void readConfig() {
+         readNetworkSettings();
  
 +        try {
 +            readDynamicActivationOfBrains();
@@ -54,8 +54,8 @@ index 8c8101d47376b9fb13652869401494c8b605620e..c36cac84603cd0c66c332eff8d55e16b
          try {
              config.save(CONFIG_FILE);
          } catch (IOException ex) {
-@@ -90,6 +108,30 @@ public class FoldenorConfig {
-                 "configuration option if the vanilla deviation is undesirable.");
+@@ -78,6 +96,30 @@ public class FoldenorConfig {
+         sendNullEntityPackets = getBoolean("network.send-null-entity-packets", sendNullEntityPackets);
      }
  
 +    private static void readDynamicActivationOfBrains() throws IOException {

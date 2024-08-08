@@ -5,10 +5,10 @@ Subject: [PATCH] SparklyPaper Skip 'MapItem#update()' if the map does not have
 
 
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-index d2badf33e46350aec586342e4e97b65a748c353e..fbc0835c8e3cafc678275334a378369207c9a6b1 100644
+index 4ac748456e7e243513c194c37c9c63d6a4757e78..bf1d94e148b67084b4ea8208eb395e31231c472b 100644
 --- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-@@ -49,6 +49,8 @@ public class FoldenorConfig {
+@@ -47,6 +47,8 @@ public class FoldenorConfig {
  
      public static boolean useVirtualThreadForAsyncScheduler = false;
  
@@ -17,8 +17,8 @@ index d2badf33e46350aec586342e4e97b65a748c353e..fbc0835c8e3cafc678275334a3783692
      public static void init(File configFile) {
          init(configFile, true);
      }
-@@ -122,6 +124,7 @@ public class FoldenorConfig {
-                 "configuration option if the vanilla deviation is undesirable.");
+@@ -115,6 +117,7 @@ public class FoldenorConfig {
+     private static void readOptimizationSettings() {
          piglinSpawnChancePersentInPortal = getInt("optimizations.piglin-spawn-chance-persent-in-portal", 100,
              "Reduces piglin spawn in portal, by reducing change to spawn");
 +        skipMapItemUpdatesIfNoBukkitRender = getBoolean("optimizations.skip_map_item_updates_if_no_bukkit_render", skipMapItemUpdatesIfNoBukkitRender);

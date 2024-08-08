@@ -6,10 +6,10 @@ Subject: [PATCH] Divine: lithium: entity.fast_elytra_check +
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/LivingEntity.java b/src/main/java/net/minecraft/world/entity/LivingEntity.java
-index bd2f3c8f28615b60a02ca09092e1429d5d4ae77c..8dc1b4caac03d7bf09b2bd4cb6d2634699a23c47 100644
+index 33f6905706f333904ccd08f5f01ad6276b3fa24d..ac95df2d619ef79a2f07e0071523c05ea1a4d08b 100644
 --- a/src/main/java/net/minecraft/world/entity/LivingEntity.java
 +++ b/src/main/java/net/minecraft/world/entity/LivingEntity.java
-@@ -2668,6 +2668,7 @@ public abstract class LivingEntity extends Entity implements Attackable {
+@@ -2658,6 +2658,7 @@ public abstract class LivingEntity extends Entity implements Attackable {
      }
  
      protected void updateSwingTime() {
@@ -17,7 +17,7 @@ index bd2f3c8f28615b60a02ca09092e1429d5d4ae77c..8dc1b4caac03d7bf09b2bd4cb6d26346
          int i = this.getCurrentSwingDuration();
  
          if (this.swinging) {
-@@ -3616,6 +3617,7 @@ public abstract class LivingEntity extends Entity implements Attackable {
+@@ -3606,6 +3607,7 @@ public abstract class LivingEntity extends Entity implements Attackable {
      }
  
      private void updateFallFlying() {

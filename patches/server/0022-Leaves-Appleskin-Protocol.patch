@@ -5,10 +5,10 @@ Subject: [PATCH] Leaves-Appleskin-Protocol
 
 
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-index c36cac84603cd0c66c332eff8d55e16b7a5d3428..8e901c59e1310d70552b3853d3f5e721aad71a79 100644
+index 5b5a2491ec297c87458cf66171f5ed4c1e41e80d..36cf79632b12c67291ccccfda7341ee543e607c6 100644
 --- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-@@ -39,6 +39,8 @@ public class FoldenorConfig {
+@@ -37,6 +37,8 @@ public class FoldenorConfig {
      public static int activationDistanceMod;
      // Pufferfish DAB
  
@@ -17,14 +17,14 @@ index c36cac84603cd0c66c332eff8d55e16b7a5d3428..8e901c59e1310d70552b3853d3f5e721
      public static void init(File configFile) {
          init(configFile, true);
      }
-@@ -98,6 +100,7 @@ public class FoldenorConfig {
+@@ -94,6 +96,7 @@ public class FoldenorConfig {
  
      protected static void readNetworkSettings(){
          sendNullEntityPackets = getBoolean("network.send-null-entity-packets", sendNullEntityPackets);
 +        appleskinProtocol = getBoolean("network.appleskin-protocol", appleskinProtocol);
      }
  
-     private static void readOptimizationSettings() {
+     private static void readDynamicActivationOfBrains() throws IOException {
 diff --git a/src/main/java/org/leavesmc/leaves/protocol/AppleSkinProtocol.java b/src/main/java/org/leavesmc/leaves/protocol/AppleSkinProtocol.java
 new file mode 100644
 index 0000000000000000000000000000000000000000..a8694777f0619584c76c9cba47f7926435b768a9

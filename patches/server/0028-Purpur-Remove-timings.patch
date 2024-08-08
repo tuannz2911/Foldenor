@@ -1421,7 +1421,7 @@ index da815f30a44cbfe577b75b79e4527930fc6980d7..280b65d9ea6cde9f417057632c305645
          return this != EntityType.PLAYER && this != EntityType.LLAMA_SPIT && this != EntityType.WITHER && this != EntityType.BAT && this != EntityType.ITEM_FRAME && this != EntityType.GLOW_ITEM_FRAME && this != EntityType.LEASH_KNOT && this != EntityType.PAINTING && this != EntityType.END_CRYSTAL && this != EntityType.EVOKER_FANGS;
      }
 diff --git a/src/main/java/net/minecraft/world/entity/LivingEntity.java b/src/main/java/net/minecraft/world/entity/LivingEntity.java
-index 873e9b488a14866c99779a5b5e5f3d1c211febd6..bd2f3c8f28615b60a02ca09092e1429d5d4ae77c 100644
+index b4fec6374803534aa3b5d5e7aec64f68c7c7c356..33f6905706f333904ccd08f5f01ad6276b3fa24d 100644
 --- a/src/main/java/net/minecraft/world/entity/LivingEntity.java
 +++ b/src/main/java/net/minecraft/world/entity/LivingEntity.java
 @@ -157,7 +157,6 @@ import org.bukkit.event.entity.EntityTeleportEvent;

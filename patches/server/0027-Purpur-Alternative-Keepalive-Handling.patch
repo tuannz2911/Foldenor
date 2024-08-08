@@ -5,10 +5,10 @@ Subject: [PATCH] Purpur-Alternative-Keepalive-Handling
 
 
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-index f8618b1b7d3ecddd5ac9e1057167050a610f8e54..b52f7bcc17fba6a3a4376a4bfea17430be9c4a8e 100644
+index 3dfc4f1b7fd8b0c968ebfec11525a42588a168e2..4c305c313db5223378eb5374c2163924edbb3b61 100644
 --- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-@@ -43,6 +43,8 @@ public class FoldenorConfig {
+@@ -41,6 +41,8 @@ public class FoldenorConfig {
  
      public static int acquirePoiForStuckEntity = 60;
  
@@ -17,14 +17,14 @@ index f8618b1b7d3ecddd5ac9e1057167050a610f8e54..b52f7bcc17fba6a3a4376a4bfea17430
      public static void init(File configFile) {
          init(configFile, true);
      }
-@@ -103,6 +105,7 @@ public class FoldenorConfig {
+@@ -99,6 +101,7 @@ public class FoldenorConfig {
      protected static void readNetworkSettings(){
          sendNullEntityPackets = getBoolean("network.send-null-entity-packets", sendNullEntityPackets);
          appleskinProtocol = getBoolean("network.appleskin-protocol", appleskinProtocol);
 +        useAlternateKeepAlive = getBoolean("network.use-alternate-keepalive", useAlternateKeepAlive);
      }
  
-     private static void readOptimizationSettings() {
+     private static void readDynamicActivationOfBrains() throws IOException {
 diff --git a/src/main/java/net/minecraft/server/network/ServerCommonPacketListenerImpl.java b/src/main/java/net/minecraft/server/network/ServerCommonPacketListenerImpl.java
 index 6531c3173f0fd54196c11db3e6348e0afe617376..d5bb4d2a23687fe0dfc6c6920fc90580a366019f 100644
 --- a/src/main/java/net/minecraft/server/network/ServerCommonPacketListenerImpl.java
