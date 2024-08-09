@@ -5,19 +5,19 @@ Subject: [PATCH] Purpur-Alternative-Keepalive-Handling
 
 
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-index 3dfc4f1b7fd8b0c968ebfec11525a42588a168e2..4c305c313db5223378eb5374c2163924edbb3b61 100644
+index 36cf79632b12c67291ccccfda7341ee543e607c6..3252f121394f9dff7025708eb8528809b3abc248 100644
 --- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-@@ -41,6 +41,8 @@ public class FoldenorConfig {
+@@ -39,6 +39,8 @@ public class FoldenorConfig {
  
-     public static int acquirePoiForStuckEntity = 60;
+     public static boolean appleskinProtocol = false;
  
 +    public static boolean useAlternateKeepAlive = false;
 +
      public static void init(File configFile) {
          init(configFile, true);
      }
-@@ -99,6 +101,7 @@ public class FoldenorConfig {
+@@ -97,6 +99,7 @@ public class FoldenorConfig {
      protected static void readNetworkSettings(){
          sendNullEntityPackets = getBoolean("network.send-null-entity-packets", sendNullEntityPackets);
          appleskinProtocol = getBoolean("network.appleskin-protocol", appleskinProtocol);

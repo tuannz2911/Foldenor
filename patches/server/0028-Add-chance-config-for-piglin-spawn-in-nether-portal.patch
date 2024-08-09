@@ -5,10 +5,10 @@ Subject: [PATCH] Add-chance-config-for-piglin-spawn-in-nether-portal
 
 
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-index 4c305c313db5223378eb5374c2163924edbb3b61..01687fa24c649cfbec58fde93b5af3a32d8222c3 100644
+index 3252f121394f9dff7025708eb8528809b3abc248..9000c8836bbbe9d9931d6e35d303aed71e8d4e6e 100644
 --- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-@@ -43,6 +43,8 @@ public class FoldenorConfig {
+@@ -41,6 +41,8 @@ public class FoldenorConfig {
  
      public static boolean useAlternateKeepAlive = false;
  
@@ -17,7 +17,7 @@ index 4c305c313db5223378eb5374c2163924edbb3b61..01687fa24c649cfbec58fde93b5af3a3
      public static void init(File configFile) {
          init(configFile, true);
      }
-@@ -85,6 +87,8 @@ public class FoldenorConfig {
+@@ -83,6 +85,8 @@ public class FoldenorConfig {
      static void readConfig() {
          readNetworkSettings();
  
@@ -26,7 +26,7 @@ index 4c305c313db5223378eb5374c2163924edbb3b61..01687fa24c649cfbec58fde93b5af3a3
          try {
              readDynamicActivationOfBrains();
          } catch (IOException e) {
-@@ -104,6 +108,11 @@ public class FoldenorConfig {
+@@ -102,6 +106,11 @@ public class FoldenorConfig {
          useAlternateKeepAlive = getBoolean("network.use-alternate-keepalive", useAlternateKeepAlive);
      }
  

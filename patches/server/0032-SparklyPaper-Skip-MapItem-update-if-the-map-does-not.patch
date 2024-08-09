@@ -5,10 +5,10 @@ Subject: [PATCH] SparklyPaper Skip 'MapItem#update()' if the map does not have
 
 
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-index 4ac748456e7e243513c194c37c9c63d6a4757e78..bf1d94e148b67084b4ea8208eb395e31231c472b 100644
+index dd3d35a8870022d6f260020377c97e0be6970481..f57a71b1182b3b8e03d3f42ecc6e1b55cb93b788 100644
 --- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-@@ -47,6 +47,8 @@ public class FoldenorConfig {
+@@ -45,6 +45,8 @@ public class FoldenorConfig {
  
      public static boolean useVirtualThreadForAsyncScheduler = false;
  
@@ -17,7 +17,7 @@ index 4ac748456e7e243513c194c37c9c63d6a4757e78..bf1d94e148b67084b4ea8208eb395e31
      public static void init(File configFile) {
          init(configFile, true);
      }
-@@ -115,6 +117,7 @@ public class FoldenorConfig {
+@@ -113,6 +115,7 @@ public class FoldenorConfig {
      private static void readOptimizationSettings() {
          piglinSpawnChancePersentInPortal = getInt("optimizations.piglin-spawn-chance-persent-in-portal", 100,
              "Reduces piglin spawn in portal, by reducing change to spawn");

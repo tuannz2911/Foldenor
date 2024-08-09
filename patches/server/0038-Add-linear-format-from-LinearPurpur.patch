@@ -63,7 +63,7 @@ index 3218cbf84f54daf06e84442d5eb1a36d8da6b215..ec9b27177dc526510e86d85f48f167b4
              synchronized (cache) {
                  regionFile = ((ChunkSystemRegionFileStorage)(Object)cache).moonrise$getRegionFileIfLoaded(chunkX, chunkZ);
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-index bf1d94e148b67084b4ea8208eb395e31231c472b..4b7c163b91443fb1013c5233e85705a8e532ab38 100644
+index f57a71b1182b3b8e03d3f42ecc6e1b55cb93b788..d4f616a4580e2fc29f9f34b7bbcbf27eecaa27ab 100644
 --- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 @@ -2,6 +2,7 @@ package net.edenor.foldenor.config;
@@ -96,7 +96,7 @@ index bf1d94e148b67084b4ea8208eb395e31231c472b..4b7c163b91443fb1013c5233e85705a8
  
      public static int version;
      static boolean verbose;
-@@ -49,6 +54,12 @@ public class FoldenorConfig {
+@@ -47,6 +52,12 @@ public class FoldenorConfig {
  
      public static boolean skipMapItemUpdatesIfNoBukkitRender = true;
  
@@ -109,7 +109,7 @@ index bf1d94e148b67084b4ea8208eb395e31231c472b..4b7c163b91443fb1013c5233e85705a8
      public static void init(File configFile) {
          init(configFile, true);
      }
-@@ -95,6 +106,8 @@ public class FoldenorConfig {
+@@ -93,6 +104,8 @@ public class FoldenorConfig {
  
          readMiscSettings();
  
@@ -118,7 +118,7 @@ index bf1d94e148b67084b4ea8208eb395e31231c472b..4b7c163b91443fb1013c5233e85705a8
          try {
              readDynamicActivationOfBrains();
          } catch (IOException e) {
-@@ -125,6 +138,25 @@ public class FoldenorConfig {
+@@ -123,6 +136,25 @@ public class FoldenorConfig {
              "Use the new Virtual Thread introduced in JDK 21 for CraftAsyncScheduler.");
      }
  

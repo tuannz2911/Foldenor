@@ -5,10 +5,10 @@ Subject: [PATCH] Leaf-Virtual-Thread-for-async-scheduler
 
 
 diff --git a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-index 01687fa24c649cfbec58fde93b5af3a32d8222c3..4ac748456e7e243513c194c37c9c63d6a4757e78 100644
+index 9000c8836bbbe9d9931d6e35d303aed71e8d4e6e..dd3d35a8870022d6f260020377c97e0be6970481 100644
 --- a/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
 +++ b/src/main/java/net/edenor/foldenor/config/FoldenorConfig.java
-@@ -45,6 +45,8 @@ public class FoldenorConfig {
+@@ -43,6 +43,8 @@ public class FoldenorConfig {
  
      public static int piglinSpawnChancePersentInPortal = 100;
  
@@ -17,7 +17,7 @@ index 01687fa24c649cfbec58fde93b5af3a32d8222c3..4ac748456e7e243513c194c37c9c63d6
      public static void init(File configFile) {
          init(configFile, true);
      }
-@@ -89,6 +91,8 @@ public class FoldenorConfig {
+@@ -87,6 +89,8 @@ public class FoldenorConfig {
  
          readOptimizationSettings();
  
@@ -26,7 +26,7 @@ index 01687fa24c649cfbec58fde93b5af3a32d8222c3..4ac748456e7e243513c194c37c9c63d6
          try {
              readDynamicActivationOfBrains();
          } catch (IOException e) {
-@@ -113,6 +117,11 @@ public class FoldenorConfig {
+@@ -111,6 +115,11 @@ public class FoldenorConfig {
              "Reduces piglin spawn in portal, by reducing change to spawn");
      }
  
