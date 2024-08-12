@@ -75,7 +75,7 @@ paperweight {
     decompileRepo.set(paperMavenPublicUrl)
 
     useStandardUpstream("Folia") {
-        url.set(github("PaperMC", "Folia"))
+        url.set(github("Edenor-Minecraft", "Folia"))
         ref.set(providers.gradleProperty("foliaRef"))
 
         withStandardPatcher {
