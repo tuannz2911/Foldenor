@@ -1001,7 +1001,7 @@ index fca787f92827019e776a6ccae8f90fe2b12c5177..87a722ca353c5ec20320e71c745fad7b
          this.profiler.popPush("send chunks");
          iterator = this.playerList.getPlayers().iterator();
 diff --git a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
-index a196839396e9a54c449b7dd5f1953a8a16657ba4..6663a726267ba93ce887abf470570d8cdd4f725b 100644
+index 6a140fa920002798f7e88f699416ae04d6a4915b..496e2a7299f171cfab1a9cbc5056953783104646 100644
 --- a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
 +++ b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
 @@ -66,7 +66,6 @@ import org.apache.logging.log4j.Level;
@@ -1012,7 +1012,7 @@ index a196839396e9a54c449b7dd5f1953a8a16657ba4..6663a726267ba93ce887abf470570d8c
  import org.bukkit.craftbukkit.util.TerminalCompletionHandler;
  import org.bukkit.craftbukkit.util.TerminalConsoleWriterThread;
  import org.bukkit.event.server.ServerCommandEvent;
-@@ -517,7 +516,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+@@ -518,7 +517,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
      }
  
      public void handleConsoleInputs() {
@@ -1021,7 +1021,7 @@ index a196839396e9a54c449b7dd5f1953a8a16657ba4..6663a726267ba93ce887abf470570d8c
          // Paper start - Perf: use proper queue
          ConsoleInput servercommand;
          while ((servercommand = this.serverCommandQueue.poll()) != null) {
-@@ -534,7 +533,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+@@ -535,7 +534,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
              // CraftBukkit end
          }
  
@@ -1030,7 +1030,7 @@ index a196839396e9a54c449b7dd5f1953a8a16657ba4..6663a726267ba93ce887abf470570d8c
      }
  
      @Override
-@@ -817,7 +816,6 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+@@ -818,7 +817,6 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
                      }
                  };
                  waitableArray[0] = waitable;
@@ -1603,7 +1603,7 @@ index bf9d00463627c702c639c7cb625c3eb35c2e44aa..70157d581f8cbe60f86f944e7c2b0ce9
      @Nullable
      private String descriptionId;
 diff --git a/src/main/java/net/minecraft/world/level/block/entity/BlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/BlockEntity.java
-index 3616d5f45309d806e1b8887ca7e9fbf0e24a5d86..d1e93b9c4af45166da10da95a2edde9db07d83a5 100644
+index 4c2e8714c64a6fe49554a11471e37078267f1eea..c8bb3d7f299d43326daaa12aa119b0eb37cb4b38 100644
 --- a/src/main/java/net/minecraft/world/level/block/entity/BlockEntity.java
 +++ b/src/main/java/net/minecraft/world/level/block/entity/BlockEntity.java
 @@ -33,14 +33,10 @@ import org.bukkit.craftbukkit.persistence.CraftPersistentDataTypeRegistry;
@@ -1622,10 +1622,10 @@ index 3616d5f45309d806e1b8887ca7e9fbf0e24a5d86..d1e93b9c4af45166da10da95a2edde9d
      private static final CraftPersistentDataTypeRegistry DATA_TYPE_REGISTRY = new CraftPersistentDataTypeRegistry();
      public CraftPersistentDataContainer persistentDataContainer;
 diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-index 6bc1db349cb1ff6652f0e48159e7b31b8d99e2e1..234751ee1a71809993ad7a6791595ef98d1fb537 100644
+index 42ae955ff55e868f9eedde61a21ec26763fd7700..52e4984b8490867772a0ac3410fd6e1cb97847b6 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
-@@ -688,7 +688,7 @@ public class LevelChunk extends ChunkAccess implements ca.spottedleaf.moonrise.p
+@@ -683,7 +683,7 @@ public class LevelChunk extends ChunkAccess implements ca.spottedleaf.moonrise.p
              ((ca.spottedleaf.moonrise.patches.chunk_system.level.ChunkSystemServerLevel)this.level).moonrise$getChunkTaskScheduler().chunkHolderManager.getChunkHolder(this.locX, this.locZ).getEntityChunk().callEntitiesLoadEvent(); // Paper - rewrite chunk system
  
              if (this.needsDecoration) {
@@ -1634,7 +1634,7 @@ index 6bc1db349cb1ff6652f0e48159e7b31b8d99e2e1..234751ee1a71809993ad7a6791595ef9
                  this.needsDecoration = false;
                  java.util.Random random = new java.util.Random();
                  random.setSeed(this.level.getSeed());
-@@ -708,7 +708,7 @@ public class LevelChunk extends ChunkAccess implements ca.spottedleaf.moonrise.p
+@@ -703,7 +703,7 @@ public class LevelChunk extends ChunkAccess implements ca.spottedleaf.moonrise.p
                      }
                  }
                  server.getPluginManager().callEvent(new org.bukkit.event.world.ChunkPopulateEvent(bukkitChunk));
@@ -1643,7 +1643,7 @@ index 6bc1db349cb1ff6652f0e48159e7b31b8d99e2e1..234751ee1a71809993ad7a6791595ef9
              }
          }
      }
-@@ -1064,7 +1064,7 @@ public class LevelChunk extends ChunkAccess implements ca.spottedleaf.moonrise.p
+@@ -1059,7 +1059,7 @@ public class LevelChunk extends ChunkAccess implements ca.spottedleaf.moonrise.p
                          ProfilerFiller gameprofilerfiller = LevelChunk.this.level.getProfiler();
  
                          gameprofilerfiller.push(this::getType);
@@ -1652,7 +1652,7 @@ index 6bc1db349cb1ff6652f0e48159e7b31b8d99e2e1..234751ee1a71809993ad7a6791595ef9
                          profiler.startTimer(timerId); try { // Folia - profiler
                          BlockState iblockdata = LevelChunk.this.getBlockState(blockposition);
  
-@@ -1093,7 +1093,7 @@ public class LevelChunk extends ChunkAccess implements ca.spottedleaf.moonrise.p
+@@ -1088,7 +1088,7 @@ public class LevelChunk extends ChunkAccess implements ca.spottedleaf.moonrise.p
                          // Paper end - Prevent block entity and entity crashes
                          // Spigot start
                      } finally {
@@ -1797,7 +1797,7 @@ index 802688c2091c3f1a31f02599fb73432811d588ee..2bc35cd9830c562153012a132ab6a67b
          // Paper end - add timings for scoreboard search
      }
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-index c9e31dcdde9d96edfc12e694065f1f4643bb9db3..585072091a0b6cb7ca627e7d2f482af8ecdcedd4 100644
+index f89e08c22bc76dba5df730a83b37324e38d2956d..e94f5248d622a59db4feb05d955885f5b4a23fe2 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 @@ -29,6 +29,7 @@ import net.minecraft.nbt.Tag;

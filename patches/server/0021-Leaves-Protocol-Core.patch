@@ -112,7 +112,7 @@ index 683b5c164bf40a9d900cb96134350f2fdd06b620..9741cad817e5bb0d8efc134f7fdb9f61
          ServerLevel worldserver = entityplayer.serverLevel();
  
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index ae22118c14f3e27cd72238ed1d556251e3852b10..ada5c6360d988b51697c225aa314f2e43bb3e04b 100644
+index 009cfbf2220c34ac4a9fcc22f39e4a5e005f5d5b..e1e269cb53418632304cb1263fec2051f26d2db3 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -489,6 +489,7 @@ public final class CraftServer implements Server {
@@ -123,7 +123,7 @@ index ae22118c14f3e27cd72238ed1d556251e3852b10..ada5c6360d988b51697c225aa314f2e4
      }
  
      public boolean getCommandBlockOverride(String command) {
-@@ -1156,6 +1157,7 @@ public final class CraftServer implements Server {
+@@ -1155,6 +1156,7 @@ public final class CraftServer implements Server {
          this.spark.registerCommandBeforePlugins(this); // Paper - spark
          this.overrideAllCommandBlockCommands = this.commandsConfiguration.getStringList("command-block-overrides").contains("*");
          this.ignoreVanillaPermissions = this.commandsConfiguration.getBoolean("ignore-vanilla-permissions");
