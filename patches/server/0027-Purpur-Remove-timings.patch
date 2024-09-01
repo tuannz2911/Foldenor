@@ -742,7 +742,7 @@ index 0c3c82b28e581286b798ee58ca4193efc2faff4a..f10e48f653a3250056ddfa6b6d931344
              // return true as command was handled
              return 1;
 diff --git a/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java b/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java
-index eae1bb367483eb6343a8644f6bac56215298bb43..923055037a3c5ff6a8c3a654f77c624dd3a51f96 100644
+index 155ea12a82c94e513fbb6090b209b14a8df5ef97..c07044cf9ce0c6c6448fc7a78e445a035395e9e7 100644
 --- a/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java
 +++ b/src/main/java/io/papermc/paper/configuration/GlobalConfiguration.java
 @@ -1,6 +1,5 @@
@@ -752,7 +752,7 @@ index eae1bb367483eb6343a8644f6bac56215298bb43..923055037a3c5ff6a8c3a654f77c624d
  import com.mojang.logging.LogUtils;
  import io.papermc.paper.configuration.constraint.Constraints;
  import io.papermc.paper.configuration.type.number.DoubleOr;
-@@ -99,29 +98,6 @@ public class GlobalConfiguration extends ConfigurationPart {
+@@ -100,29 +99,6 @@ public class GlobalConfiguration extends ConfigurationPart {
          public boolean enableImmediately = false;
      }
  
@@ -1039,7 +1039,7 @@ index 6a140fa920002798f7e88f699416ae04d6a4915b..496e2a7299f171cfab1a9cbc50569537
              // Paper end
              ConsoleInput serverCommand = new ConsoleInput(event.getCommand(), wrapper);
 diff --git a/src/main/java/net/minecraft/server/level/ChunkMap.java b/src/main/java/net/minecraft/server/level/ChunkMap.java
-index 31f2f6e841179a2fba2199afa7d6211eb68d3c07..f0173385e998e5dd0a6577a7a96804b327b0c1fa 100644
+index 728454fcfbeddcfe1b0a95e89827f33d7f7838bc..15fb55c35af4cf6a980c89ae6b41f50592503a26 100644
 --- a/src/main/java/net/minecraft/server/level/ChunkMap.java
 +++ b/src/main/java/net/minecraft/server/level/ChunkMap.java
 @@ -1,6 +1,5 @@

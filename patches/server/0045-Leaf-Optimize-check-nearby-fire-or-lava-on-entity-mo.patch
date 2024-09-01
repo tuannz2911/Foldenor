@@ -5,7 +5,7 @@ Subject: [PATCH] Leaf: Optimize check nearby fire or lava on entity move
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
-index b3b3be71268a39e24b3da69e284885b94c73d0fe..9501dd5cfa149697f90427021987c9f98ce10ddd 100644
+index 434b2e2446dbe943baee572dd8caea8025168673..d87f8e37f61b9428277271facf95864719f05110 100644
 --- a/src/main/java/net/minecraft/world/entity/Entity.java
 +++ b/src/main/java/net/minecraft/world/entity/Entity.java
 @@ -1310,9 +1310,12 @@ public abstract class Entity implements SyncedDataHolder, Nameable, EntityAccess
