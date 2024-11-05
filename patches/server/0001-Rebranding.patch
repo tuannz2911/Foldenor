@@ -5,7 +5,7 @@ Subject: [PATCH] Rebranding
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index f0a90d13a17160cd363d54d494add4f6433b4758..0a9bcd472022cd7ea57110dd24928d5be021d649 100644
+index c2f2ba1df68e9823c56287f1bea23fb6d6a781a2..5548c10b3ced9def2e3062f0bbdc922e99839851 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -13,7 +13,7 @@ configurations.named(log4jPlugins.compileClasspathConfigurationName) {
@@ -17,7 +17,7 @@ index f0a90d13a17160cd363d54d494add4f6433b4758..0a9bcd472022cd7ea57110dd24928d5b
      // Paper start
      implementation("org.jline:jline-terminal-jansi:3.21.0")
      implementation("net.minecrell:terminalconsoleappender:1.3.0")
-@@ -84,14 +84,14 @@ tasks.jar {
+@@ -85,14 +85,14 @@ tasks.jar {
          val gitBranch = git("rev-parse", "--abbrev-ref", "HEAD").getText().trim() // Paper
          attributes(
              "Main-Class" to "org.bukkit.craftbukkit.Main",

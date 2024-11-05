@@ -26,10 +26,10 @@ index 36cf79632b12c67291ccccfda7341ee543e607c6..3252f121394f9dff7025708eb8528809
  
      private static void readDynamicActivationOfBrains() throws IOException {
 diff --git a/src/main/java/net/minecraft/server/network/ServerCommonPacketListenerImpl.java b/src/main/java/net/minecraft/server/network/ServerCommonPacketListenerImpl.java
-index 6531c3173f0fd54196c11db3e6348e0afe617376..d5bb4d2a23687fe0dfc6c6920fc90580a366019f 100644
+index 58bb790e44809cdd80a34809e700584794c079d6..a2363d65fcfac166ac260cef969e4af3ea91383c 100644
 --- a/src/main/java/net/minecraft/server/network/ServerCommonPacketListenerImpl.java
 +++ b/src/main/java/net/minecraft/server/network/ServerCommonPacketListenerImpl.java
-@@ -74,6 +74,7 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
+@@ -79,6 +79,7 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
      private long keepAliveChallenge;
      private long closedListenerTime;
      private boolean closed = false;
@@ -37,7 +37,7 @@ index 6531c3173f0fd54196c11db3e6348e0afe617376..d5bb4d2a23687fe0dfc6c6920fc90580
      private int latency;
      private volatile boolean suspendFlushingOnServerThread = false;
      public final java.util.Map<java.util.UUID, net.kyori.adventure.resource.ResourcePackCallback> packCallbacks = new java.util.concurrent.ConcurrentHashMap<>(); // Paper - adventure resource pack callbacks
-@@ -136,6 +137,16 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
+@@ -141,6 +142,16 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
  
      @Override
      public void handleKeepAlive(ServerboundKeepAlivePacket packet) {
@@ -54,7 +54,7 @@ index 6531c3173f0fd54196c11db3e6348e0afe617376..d5bb4d2a23687fe0dfc6c6920fc90580
          //PacketUtils.ensureRunningOnSameThread(packet, this, this.player.serverLevel()); // CraftBukkit // Paper - handle ServerboundKeepAlivePacket async
          if (this.keepAlivePending && packet.getId() == this.keepAliveChallenge) {
              int i = (int) (Util.getMillis() - this.keepAliveTime);
-@@ -271,6 +282,21 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
+@@ -272,6 +283,21 @@ public abstract class ServerCommonPacketListenerImpl implements ServerCommonPack
          long currentTime = Util.getMillis();
          long elapsedTime = currentTime - this.keepAliveTime;
  

@@ -65,7 +65,7 @@ index 1f5ed236fb7c0c1b0181675747d25d233f534284..f0f521411cdfb7b8016fb22f715b3d28
  
          this.syncSaddleToClients();
 diff --git a/src/main/java/net/minecraft/world/entity/npc/AbstractVillager.java b/src/main/java/net/minecraft/world/entity/npc/AbstractVillager.java
-index 5f3104b2a46d4b47cf505012438f848e3b744315..5425f0b39175ebe273c1577de4001a3153775f0a 100644
+index 4153d16c3fc6b16315b3822251e4f740cf7dbd98..0a8de8a27b8ca60039863878b089c91af812cfc0 100644
 --- a/src/main/java/net/minecraft/world/entity/npc/AbstractVillager.java
 +++ b/src/main/java/net/minecraft/world/entity/npc/AbstractVillager.java
 @@ -6,6 +6,8 @@ import com.mojang.serialization.DataResult;
@@ -77,7 +77,7 @@ index 5f3104b2a46d4b47cf505012438f848e3b744315..5425f0b39175ebe273c1577de4001a31
  import net.minecraft.Util;
  import net.minecraft.advancements.CriteriaTriggers;
  import net.minecraft.core.particles.ParticleOptions;
-@@ -71,6 +73,15 @@ public abstract class AbstractVillager extends AgeableMob implements InventoryCa
+@@ -69,6 +71,15 @@ public abstract class AbstractVillager extends AgeableMob implements InventoryCa
          super(type, world);
          this.setPathfindingMalus(PathType.DANGER_FIRE, 16.0F);
          this.setPathfindingMalus(PathType.DAMAGE_FIRE, -1.0F);
@@ -208,10 +208,10 @@ index f933fa419a4b55b0096ff42caf1b071d027b8e7e..a23f5de13a6a9d832018952e597680b5
  
      @Override
 diff --git a/src/main/java/net/minecraft/world/level/block/entity/BrewingStandBlockEntity.java b/src/main/java/net/minecraft/world/level/block/entity/BrewingStandBlockEntity.java
-index 46011ababdadaafd72a8717911e49f6581ab5688..1d70b273e12f7dea799f93ce75bf85e4b39d6104 100644
+index 0a93bacd62249bae1800ff306b8a7c765b0e5a8b..ac6247b15aa5a06c43b2be8020125d81fb66993c 100644
 --- a/src/main/java/net/minecraft/world/level/block/entity/BrewingStandBlockEntity.java
 +++ b/src/main/java/net/minecraft/world/level/block/entity/BrewingStandBlockEntity.java
-@@ -333,6 +333,16 @@ public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements
+@@ -344,6 +344,16 @@ public class BrewingStandBlockEntity extends BaseContainerBlockEntity implements
          return this.canPlaceItem(slot, stack);
      }
  
