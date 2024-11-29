@@ -2,7 +2,7 @@
 plugins {
     java
     `maven-publish`
-    id("io.papermc.paperweight.patcher") version "1.7.2-SNAPSHOT"
+    id("io.papermc.paperweight.patcher") version "1.7.5"
 }
 
 val paperMavenPublicUrl = "https://repo.papermc.io/repository/maven-public/"
@@ -75,7 +75,7 @@ paperweight {
     decompileRepo.set(paperMavenPublicUrl)
 
     useStandardUpstream("Folia") {
-        url.set(github("Edenor-Minecraft", "Folia"))
+        url.set(github("PaperMC", "Folia"))
         ref.set(providers.gradleProperty("foliaRef"))
 
         withStandardPatcher {

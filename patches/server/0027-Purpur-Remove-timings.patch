@@ -839,7 +839,7 @@ index 97817400b70b2579f3a8750f7f33197a5db7ba94..a63b738f567099347cefc7c79911894f
                          final int packetTimerId = profiler.getOrCreateTimerAndStart(() -> "Packet Handler: ".concat(io.papermc.paper.util.ObfHelper.INSTANCE.deobfClassName(packet.getClass().getName()))); try { // Folia - profiler
                          packet.handle(listener);
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index b97ce0451ce12be8e7e499e1b9e4527b6851fb7d..f1b33ea2ecb3b13562e13cfd5158d7c45c74fe8a 100644
+index fb0a0099c5cc475300dc7474fcb1ccd13c64ec2c..cabe6325bd961f902f479dfe9da6ec1a77ecd417 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -3,7 +3,6 @@ package net.minecraft.server;
@@ -1050,10 +1050,10 @@ index 74524dcd4539a31e9d0037cd607ffbfce02f414c..d117bd2687b8e9b9cff53e2dbfc96af7
  import com.google.common.collect.ImmutableList.Builder;
  import com.google.common.collect.Iterables;
 diff --git a/src/main/java/net/minecraft/server/level/ServerChunkCache.java b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
-index 8ec743bbb76e402a2a0b92bdafe49d70493b2dc9..0f03598d459ca4f9194a03769fcd3973b27b1398 100644
+index ca3a0f4bcbea47f824cdb5a21a9a2616c1da4fea..56a5b00f0860cbcc833bca2717eb38c52f3dec4b 100644
 --- a/src/main/java/net/minecraft/server/level/ServerChunkCache.java
 +++ b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
-@@ -355,9 +355,9 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
+@@ -360,9 +360,9 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
  
      public void save(boolean flush) {
          // Paper - rewrite chunk system
@@ -1065,7 +1065,7 @@ index 8ec743bbb76e402a2a0b92bdafe49d70493b2dc9..0f03598d459ca4f9194a03769fcd3973
      }
  
      @Override
-@@ -394,7 +394,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
+@@ -399,7 +399,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
      public void tick(BooleanSupplier shouldKeepTicking, boolean tickChunks) {
          final ca.spottedleaf.leafprofiler.RegionizedProfiler.Handle profiler = io.papermc.paper.threadedregions.TickRegionScheduler.getProfiler(); // Folia - profiler
          this.level.getProfiler().push("purge");
@@ -1074,7 +1074,7 @@ index 8ec743bbb76e402a2a0b92bdafe49d70493b2dc9..0f03598d459ca4f9194a03769fcd3973
          profiler.startTimer(ca.spottedleaf.leafprofiler.LProfilerRegistry.CHUNK_HOLDER_MANAGER_TICK); try { // Folia - profiler
          if (this.level.tickRateManager().runsNormally() || !tickChunks || this.level.spigotConfig.unloadFrozenChunks) { // Spigot
              this.distanceManager.purgeStaleTickets();
-@@ -402,24 +402,24 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
+@@ -407,24 +407,24 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
  
          this.runDistanceManagerUpdates();
          } finally { profiler.stopTimer(ca.spottedleaf.leafprofiler.LProfilerRegistry.CHUNK_HOLDER_MANAGER_TICK); } // Folia - profiler
@@ -1104,7 +1104,7 @@ index 8ec743bbb76e402a2a0b92bdafe49d70493b2dc9..0f03598d459ca4f9194a03769fcd3973
          this.level.getProfiler().pop();
          this.clearCache();
      }
-@@ -459,13 +459,13 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
+@@ -464,13 +464,13 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
              } finally { profiler.stopTimer(ca.spottedleaf.leafprofiler.LProfilerRegistry.CHUNK_TICK_COLLECT_CHUNKS); } // Folia - profiler
              // Paper end - chunk tick iteration optimisations
              Iterator iterator = null; // Paper - chunk tick iteration optimisations
@@ -1120,7 +1120,7 @@ index 8ec743bbb76e402a2a0b92bdafe49d70493b2dc9..0f03598d459ca4f9194a03769fcd3973
                  int k = this.distanceManager.getNaturalSpawnChunkCount();
                  // Paper start - Optional per player mob spawns
                  int naturalSpawnChunkCount = k;
-@@ -492,7 +492,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
+@@ -497,7 +497,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
                  }
                  } finally { profiler.stopTimer(ca.spottedleaf.leafprofiler.LProfilerRegistry.MOB_SPAWN_ENTITY_COUNT); } // Folia - profiler
                  // Paper end - Optional per player mob spawns
@@ -1129,7 +1129,7 @@ index 8ec743bbb76e402a2a0b92bdafe49d70493b2dc9..0f03598d459ca4f9194a03769fcd3973
  
                  regionizedWorldData.lastSpawnState = spawnercreature_d; // Folia - region threading
                  gameprofilerfiller.popPush("spawnAndTick");
-@@ -541,21 +541,21 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
+@@ -546,21 +546,21 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
                  profiler.addCounter(ca.spottedleaf.leafprofiler.LProfilerRegistry.SPAWN_CHUNK_COUNT, spawnChunkCount); // Folia - profiler
                  profiler.addCounter(ca.spottedleaf.leafprofiler.LProfilerRegistry.RANDOM_CHUNK_TICK_COUNT, randomChunkCount); // Folia - profiler
                  } finally { profiler.stopTimer(ca.spottedleaf.leafprofiler.LProfilerRegistry.SPAWN_AND_RANDOM_TICK); } // Folia - profiler
@@ -1155,7 +1155,7 @@ index 8ec743bbb76e402a2a0b92bdafe49d70493b2dc9..0f03598d459ca4f9194a03769fcd3973
              profiler.startTimer(ca.spottedleaf.leafprofiler.LProfilerRegistry.BROADCAST_BLOCK_CHANGES); try { // Folia - profiler
              {
                  final it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.server.level.ServerChunkCache.ChunkAndHolder> chunks = (it.unimi.dsi.fastutil.objects.ObjectArrayList<net.minecraft.server.level.ServerChunkCache.ChunkAndHolder>)list;
-@@ -571,7 +571,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
+@@ -576,7 +576,7 @@ public class ServerChunkCache extends ChunkSource implements ca.spottedleaf.moon
                  }
              }
              } finally { profiler.stopTimer(ca.spottedleaf.leafprofiler.LProfilerRegistry.BROADCAST_BLOCK_CHANGES); } // Folia - profiler
@@ -1363,7 +1363,7 @@ index e0c8152024e9ce9f9b22cf697ca2d6058fc34a9a..4812ea7217bb59c43341f4997265a4f5
  
          }
 diff --git a/src/main/java/net/minecraft/server/players/PlayerList.java b/src/main/java/net/minecraft/server/players/PlayerList.java
-index f692a5da9e9a378e056e75e94593301a03c2325b..70cd2a56c65d835298691cad9b1415bbaca2c4e0 100644
+index 3b9d59b585a12dd3f95cf4b37d2f110470e7cf54..7338663a1f5e69eb0c7da7fa6d0df373c5db579a 100644
 --- a/src/main/java/net/minecraft/server/players/PlayerList.java
 +++ b/src/main/java/net/minecraft/server/players/PlayerList.java
 @@ -1,6 +1,5 @@
@@ -1563,7 +1563,7 @@ index 3e739362046d624dd46412f7c50a7220d26593cf..de8170368cb0cd658fc7ab06385757b5
          //co.aikar.timings.TimingHistory.tileEntityTicks += this.blockEntityTickers.size(); // Paper // Folia - region threading
          gameprofilerfiller.pop();
 diff --git a/src/main/java/net/minecraft/world/level/NaturalSpawner.java b/src/main/java/net/minecraft/world/level/NaturalSpawner.java
-index dd02f20e965e6e4aaaf5992ea3c4bb0b7f3cc270..f6d94cde5b20c6a25e73a0f739e564b302936815 100644
+index 1023b0d4f52a79bc4db27130d47b6c93b464794a..8cdd5e3adf11098b71996530c9c58757d76747ed 100644
 --- a/src/main/java/net/minecraft/world/level/NaturalSpawner.java
 +++ b/src/main/java/net/minecraft/world/level/NaturalSpawner.java
 @@ -128,7 +128,7 @@ public final class NaturalSpawner {
@@ -1575,7 +1575,7 @@ index dd02f20e965e6e4aaaf5992ea3c4bb0b7f3cc270..f6d94cde5b20c6a25e73a0f739e564b3
          MobCategory[] aenumcreaturetype = NaturalSpawner.SPAWNING_CATEGORIES;
          int i = aenumcreaturetype.length;
  
-@@ -181,7 +181,7 @@ public final class NaturalSpawner {
+@@ -180,7 +180,7 @@ public final class NaturalSpawner {
              }
          }
  
@@ -1662,7 +1662,7 @@ index 6bc1db349cb1ff6652f0e48159e7b31b8d99e2e1..234751ee1a71809993ad7a6791595ef9
                      }
                  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
-index 3d6c4d0cb4a92660c353fb9604e6bbff93dc692f..63fbcd316b974be65db7a1faa4228a54c5fa68f9 100644
+index 8ecf35fe449683e34b4bcdecbad54d5c98e5b8a3..42850d23ea2cfdb6721cdf3767c9770749a5005f 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftScheduler.java
 @@ -1,6 +1,5 @@
@@ -1722,7 +1722,7 @@ index 3d6c4d0cb4a92660c353fb9604e6bbff93dc692f..63fbcd316b974be65db7a1faa4228a54
  
      private boolean isReady(final int currentTick) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftTask.java b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftTask.java
-index 4a79c28fe61bec567db40936ad65ae8a60874ff7..551ac25383730ff553f6be8286cc8a5dbd816887 100644
+index 1cd8e107c33d05f89f291fbe52be1d39c0bed64a..be43d1bca7e974ab26f1a81a9dbfa9f4e6a5543b 100644
 --- a/src/main/java/org/bukkit/craftbukkit/scheduler/CraftTask.java
 +++ b/src/main/java/org/bukkit/craftbukkit/scheduler/CraftTask.java
 @@ -2,16 +2,10 @@ package org.bukkit.craftbukkit.scheduler;
@@ -1844,7 +1844,7 @@ index 7948267b6b91100a2fd2dcb24817037c75f6953c..c9d4b94a00e4a3256dd530103d074461
  
      @Override
 diff --git a/src/main/java/org/spigotmc/ActivationRange.java b/src/main/java/org/spigotmc/ActivationRange.java
-index 24b45224b6a9e3b86ddba550e720b62bd5638c5d..69784dbf1fc50b27d15582ca058b7b0027fa49ae 100644
+index ee5be8154ae8f6c8dbdf057bd57d1e6c717837ec..e1091ed36858b2087dc5df9af4abcb6ab0de6570 100644
 --- a/src/main/java/org/spigotmc/ActivationRange.java
 +++ b/src/main/java/org/spigotmc/ActivationRange.java
 @@ -34,7 +34,6 @@ import net.minecraft.world.entity.projectile.FireworkRocketEntity;

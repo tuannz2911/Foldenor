@@ -5,10 +5,10 @@ Subject: [PATCH] Add linear format from LinearPurpur
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 5548c10b3ced9def2e3062f0bbdc922e99839851..ba7dde3345cf90e47c9f5f9675be78eecb35a54c 100644
+index b13eff962e65653bfcb15a94498bace6d3b8e18a..fa7207297fae80cb99eeade66494f2a77fbb2126 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
-@@ -30,6 +30,10 @@ dependencies {
+@@ -31,6 +31,10 @@ dependencies {
      alsoShade(log4jPlugins.output)
      implementation("io.netty:netty-codec-haproxy:4.1.97.Final") // Paper - Add support for proxy protocol
      // Paper end
@@ -152,7 +152,7 @@ index f57a71b1182b3b8e03d3f42ecc6e1b55cb93b788..db2c92e8fd7d811639f3fb0bb7cff675
          dearEnabled = getBoolean("dab.enabled",  true);
          startDistance = getInt("dab.start-distance",  12,
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index f1b33ea2ecb3b13562e13cfd5158d7c45c74fe8a..4d8dac65d273f732e287728f80cd0b9be3dd8ed3 100644
+index cabe6325bd961f902f479dfe9da6ec1a77ecd417..562ab50cb8bdfa6492fb3edf570c6d797c1733bf 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -1000,10 +1000,10 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
