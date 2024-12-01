@@ -4,10 +4,10 @@ on:
   push:
     branches: [ "1.21.1" ]
   workflow_dispatch:
-  #workflow_run:
-    #workflows: ["Automatically update Folia commit"]
-   # types:
-     # - completed
+  workflow_run:
+    workflows: ["Automatically update Folia commit"]
+    types:
+      - completed
 
 jobs:
   compile_1_21_1_core_jar:
@@ -39,18 +39,12 @@ jobs:
 
       - name: Apply Patches
         run: ./gradlew applyPatches
-   
-      - name: Build MojmapPaperclip
-        run: ./gradlew createMojmapPaperclipJar
-        
-      - name: Build ReobfPaperclip
-        run: ./gradlew createReobfPaperclipJar
            
       - name: Make release
         uses: marvinpinto/action-automatic-releases@master
         with:
           title: "Foldenor 1.21.1 release"
           automatic_release_tag: "1.21.1"
-          files: build/libs/*
+          files: *
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
