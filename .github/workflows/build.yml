@@ -40,11 +40,6 @@ jobs:
       - name: Apply Patches
         run: ./gradlew applyPatches
            
-      - name: Make release
-        uses: marvinpinto/action-automatic-releases@master
-        with:
-          title: "Foldenor 1.21.1 release"
-          automatic_release_tag: "1.21.1"
-          files: "*"
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4
+        path: "*"
