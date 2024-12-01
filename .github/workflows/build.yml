@@ -45,6 +45,6 @@ jobs:
         with:
           title: "Foldenor 1.21.1 release"
           automatic_release_tag: "1.21.1"
-          files: *
+          files: "*"
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
